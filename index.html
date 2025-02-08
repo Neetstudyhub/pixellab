@@ -26,6 +26,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: 0.3s;
         }
         nav a {
             color: white;
@@ -38,6 +39,21 @@
             text-decoration: underline;
             color: #ff6f61;
         }
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+        .menu-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .menu-links a {
+            margin: 0 15px;
+        }
+
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -124,12 +140,19 @@
         }
         /* Responsive Design */
         @media (max-width: 768px) {
-            nav a {
-                margin: 0 15px;
-                font-size: 16px;
+            .menu-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
             }
-            .container {
-                padding: 20px;
+            .menu-links a {
+                margin: 10px 0;
+            }
+            .menu-icon {
+                display: block;
+            }
+            nav.active .menu-links {
+                display: flex;
             }
         }
     </style>
@@ -137,15 +160,17 @@
 <body>
 
 <nav>
-    <a href="#resize">Resize Image</a>
-    <a href="#rotate">Rotate Image</a>
-    <a href="#filter">Apply Filters</a>
-    <a href="#crop">Crop Image</a>
-    <a href="#brightness">Adjust Brightness/Contrast</a>
-    <a href="#text">Add Text to Image</a>
-    <a href="#border">Add Border to Image</a>
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    <div class="menu-links">
+        <a href="#resize">Resize Image</a>
+        <a href="#rotate">Rotate Image</a>
+        <a href="#crop">Crop Image</a>
+        <a href="#text">Add Text to Image</a>
+        <a href="#border">Add Border to Image</a>
+    </div>
 </nav>
 
+<!-- Content Sections -->
 <!-- Resize Image -->
 <div class="container" id="resize">
     <h2>Resize Your Image</h2>
@@ -172,21 +197,6 @@
     <div class="image-preview" id="rotate-preview"></div>
 </div>
 
-<!-- Apply Filters -->
-<div class="container" id="filter">
-    <h2>Apply Filters to Your Image</h2>
-    <input type="file" id="filter-upload" />
-    <select id="filter-select">
-        <option value="grayscale(100%)">Grayscale</option>
-        <option value="sepia(100%)">Sepia</option>
-        <option value="invert(100%)">Invert</option>
-        <option value="blur(5px)">Blur</option>
-    </select>
-    <button onclick="applyFilter()">Apply Filter</button>
-
-    <div class="image-preview" id="filter-preview"></div>
-</div>
-
 <!-- Crop Image -->
 <div class="container" id="crop">
     <h2>Crop Your Image</h2>
@@ -198,17 +208,6 @@
     <button onclick="cropImage()">Crop Image</button>
 
     <div class="image-preview" id="crop-preview"></div>
-</div>
-
-<!-- Brightness and Contrast Adjustment -->
-<div class="container" id="brightness">
-    <h2>Adjust Brightness and Contrast</h2>
-    <input type="file" id="brightness-upload" />
-    <input type="range" id="brightness-range" min="-100" max="100" value="0" />
-    <input type="range" id="contrast-range" min="-100" max="100" value="0" />
-    <button onclick="adjustBrightnessContrast()">Apply Adjustments</button>
-
-    <div class="image-preview" id="brightness-preview"></div>
 </div>
 
 <!-- Add Text to Image -->
@@ -237,16 +236,19 @@
 </footer>
 
 <script>
-    // Global variable for uploaded image
-    let uploadedImage = null;
+    // Toggle menu visibility on small screens
+    function toggleMenu() {
+        const nav = document.querySelector('nav');
+        nav.classList.toggle('active');
+    }
 
-    // Function to resize image
+    // Resize Image
     function resizeImage() {
-        const fileInput = document.getElementById("resize-upload");
-        const width = document.getElementById("resize-width").value;
-        const height = document.getElementById("resize-height").value;
-        const preview = document.getElementById("resize-preview");
-        const info = document.getElementById("resize-info");
+        const fileInput = document.getElementById('resize-upload');
+        const width = document.getElementById('resize-width').value;
+        const height = document.getElementById('resize-height').value;
+        const preview = document.getElementById('resize-preview');
+        const info = document.getElementById('resize-info');
 
         if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
@@ -254,29 +256,28 @@
                 const img = new Image();
                 img.src = e.target.result;
                 img.onload = function() {
-                    const originalSize = (fileInput.files[0].size / 1024).toFixed(2) + " KB";
-                    const canvas = document.createElement("canvas");
-                    canvas.width = width;
-                    canvas.height = height;
-                    const ctx = canvas.getContext("2d");
-                    ctx.drawImage(img, 0, 0, width, height);
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = width || img.width;
+                    canvas.height = height || img.height;
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
                     const newImage = canvas.toDataURL();
-
-                    info.innerHTML = `Original Size: ${originalSize}<br>Converted Size: ${(newImage.length / 1024).toFixed(2)} KB`;
                     preview.innerHTML = `<img src="${newImage}" alt="Resized Image" />`;
                     preview.innerHTML += `<a class="download-btn" href="${newImage}" download="resized-image.png">Download</a>`;
+
+                    info.innerHTML = `New Size: ${canvas.width} x ${canvas.height}px`;
                 };
             };
             reader.readAsDataURL(fileInput.files[0]);
         }
     }
 
-    // Function to rotate image
+    // Rotate Image
     function rotateImage() {
-        const fileInput = document.getElementById("rotate-upload");
-        const rotation = document.getElementById("rotate-select").value;
-        const preview = document.getElementById("rotate-preview");
+        const fileInput = document.getElementById('rotate-upload');
+        const degree = document.getElementById('rotate-select').value;
+        const preview = document.getElementById('rotate-preview');
 
         if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
@@ -284,16 +285,14 @@
                 const img = new Image();
                 img.src = e.target.result;
                 img.onload = function() {
-                    const canvas = document.createElement("canvas");
-                    const ctx = canvas.getContext("2d");
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
                     canvas.width = img.height;
                     canvas.height = img.width;
                     ctx.translate(canvas.width / 2, canvas.height / 2);
-                    ctx.rotate((rotation * Math.PI) / 180);
+                    ctx.rotate((degree * Math.PI) / 180);
                     ctx.drawImage(img, -img.width / 2, -img.height / 2);
-
                     const newImage = canvas.toDataURL();
-
                     preview.innerHTML = `<img src="${newImage}" alt="Rotated Image" />`;
                     preview.innerHTML += `<a class="download-btn" href="${newImage}" download="rotated-image.png">Download</a>`;
                 };
@@ -302,43 +301,14 @@
         }
     }
 
-    // Function to apply filter
-    function applyFilter() {
-        const fileInput = document.getElementById("filter-upload");
-        const filter = document.getElementById("filter-select").value;
-        const preview = document.getElementById("filter-preview");
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement("canvas");
-                    const ctx = canvas.getContext("2d");
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.filter = filter;
-                    ctx.drawImage(img, 0, 0, img.width, img.height);
-
-                    const newImage = canvas.toDataURL();
-
-                    preview.innerHTML = `<img src="${newImage}" alt="Filtered Image" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="filtered-image.png">Download</a>`;
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-    // Function to crop image
+    // Crop Image
     function cropImage() {
-        const fileInput = document.getElementById("crop-upload");
-        const x = document.getElementById("crop-x").value;
-        const y = document.getElementById("crop-y").value;
-        const width = document.getElementById("crop-width").value;
-        const height = document.getElementById("crop-height").value;
-        const preview = document.getElementById("crop-preview");
+        const fileInput = document.getElementById('crop-upload');
+        const x = document.getElementById('crop-x').value;
+        const y = document.getElementById('crop-y').value;
+        const width = document.getElementById('crop-width').value;
+        const height = document.getElementById('crop-height').value;
+        const preview = document.getElementById('crop-preview');
 
         if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
@@ -346,14 +316,13 @@
                 const img = new Image();
                 img.src = e.target.result;
                 img.onload = function() {
-                    const canvas = document.createElement("canvas");
-                    const ctx = canvas.getContext("2d");
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
                     canvas.width = width;
                     canvas.height = height;
                     ctx.drawImage(img, x, y, width, height, 0, 0, width, height);
 
                     const newImage = canvas.toDataURL();
-
                     preview.innerHTML = `<img src="${newImage}" alt="Cropped Image" />`;
                     preview.innerHTML += `<a class="download-btn" href="${newImage}" download="cropped-image.png">Download</a>`;
                 };
@@ -362,41 +331,11 @@
         }
     }
 
-    // Function to adjust brightness and contrast
-    function adjustBrightnessContrast() {
-        const fileInput = document.getElementById("brightness-upload");
-        const brightness = document.getElementById("brightness-range").value;
-        const contrast = document.getElementById("contrast-range").value;
-        const preview = document.getElementById("brightness-preview");
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement("canvas");
-                    const ctx = canvas.getContext("2d");
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.filter = `brightness(${brightness}%) contrast(${contrast}%)`;
-                    ctx.drawImage(img, 0, 0, img.width, img.height);
-
-                    const newImage = canvas.toDataURL();
-
-                    preview.innerHTML = `<img src="${newImage}" alt="Brightness and Contrast Adjusted Image" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="brightness-contrast-adjusted-image.png">Download</a>`;
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-    // Function to add text to image
+    // Add Text to Image
     function addTextToImage() {
-        const fileInput = document.getElementById("text-upload");
-        const text = document.getElementById("text-input").value;
-        const preview = document.getElementById("text-preview");
+        const fileInput = document.getElementById('text-upload');
+        const text = document.getElementById('text-input').value;
+        const preview = document.getElementById('text-preview');
 
         if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
@@ -404,31 +343,31 @@
                 const img = new Image();
                 img.src = e.target.result;
                 img.onload = function() {
-                    const canvas = document.createElement("canvas");
-                    const ctx = canvas.getContext("2d");
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
                     canvas.width = img.width;
                     canvas.height = img.height;
-                    ctx.drawImage(img, 0, 0, img.width, img.height);
-                    ctx.font = "40px Arial";
-                    ctx.fillStyle = "white";
-                    ctx.fillText(text, 50, 50);
+                    ctx.drawImage(img, 0, 0);
+                    ctx.font = '36px Arial';
+                    ctx.fillStyle = 'white';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(text, canvas.width / 2, canvas.height - 30);
 
                     const newImage = canvas.toDataURL();
-
-                    preview.innerHTML = `<img src="${newImage}" alt="Text Added Image" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="text-added-image.png">Download</a>`;
+                    preview.innerHTML = `<img src="${newImage}" alt="Image with Text" />`;
+                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="image-with-text.png">Download</a>`;
                 };
             };
             reader.readAsDataURL(fileInput.files[0]);
         }
     }
 
-    // Function to add border to image
+    // Add Border to Image
     function addBorder() {
-        const fileInput = document.getElementById("border-upload");
-        const thickness = document.getElementById("border-thickness").value;
-        const color = document.getElementById("border-color").value;
-        const preview = document.getElementById("border-preview");
+        const fileInput = document.getElementById('border-upload');
+        const thickness = document.getElementById('border-thickness').value;
+        const color = document.getElementById('border-color').value;
+        const preview = document.getElementById('border-preview');
 
         if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
@@ -436,8 +375,8 @@
                 const img = new Image();
                 img.src = e.target.result;
                 img.onload = function() {
-                    const canvas = document.createElement("canvas");
-                    const ctx = canvas.getContext("2d");
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
                     canvas.width = img.width + thickness * 2;
                     canvas.height = img.height + thickness * 2;
                     ctx.fillStyle = color;
