@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Link Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Image to Link Converter</h2>
+
+        <!-- Option 1: Upload Image from Device -->
+        <button id="pickGalleryBtn">Pick from Gallery</button>
+        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+        <button id="generateLocalLinkBtn">Generate Temporary Link</button>
+
+        <!-- Option 2: Use Google Drive Link -->
+        <input type="text" id="driveLink" placeholder="Paste Google Drive shareable link">
+        <button id="generateDriveLinkBtn">Generate Permanent Link</button>
+
+        <!-- Result Section -->
+        <div id="resultContainer" style="display: none;">
+            <p>Generated Link:</p>
+            <a id="generatedLink" href="#" target="_blank">Click to View Image</a>
+            <button id="copyBtn">Copy Link</button>
+        </div>
+
+        <!-- Image Preview -->
+        <div id="previewContainer" style="display: none;">
+            <p>Image Preview:</p>
+            <img id="previewImage" src="" alt="Image Preview">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
