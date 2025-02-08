@@ -3,35 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image to Link Converter</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Premium Image Converter & Background Remover</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f7c4e3, #e1bee7);
+            color: #333;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        nav {
+            background: #1e1e1e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+            color: #ff6f61;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: translateY(0);
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="file"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s ease;
+        }
+        input[type="file"]:hover, input[type="number"]:hover, select:hover {
+            border-color: #ff6f61;
+        }
+        button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e04e44;
+        }
+        .image-preview {
+            margin-top: 30px;
+            text-align: center;
+            position: relative;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .download-btn:hover {
+            background-color: #218838;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer a {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 15px;
+                font-size: 16px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Image to Link Converter</h2>
 
-        <!-- Option 1: Upload Image from Device -->
-        <button id="pickGalleryBtn">Pick from Gallery</button>
-        <input type="file" id="imageInput" accept="image/*" style="display: none;">
-        <button id="generateLocalLinkBtn">Generate Temporary Link</button>
+<nav>
+    <a href="#convert">Image Converter</a>
+    <a href="#background-remover">Background Remover</a>
+</nav>
 
-        <!-- Option 2: Use Google Drive Link -->
-        <input type="text" id="driveLink" placeholder="Paste Google Drive shareable link">
-        <button id="generateDriveLinkBtn">Generate Permanent Link</button>
+<div class="container" id="convert">
+    <h2>Premium Image Size Converter</h2>
+    <input type="file" id="image-upload" />
+    <input type="number" id="width" placeholder="Enter new width (px)" />
+    <input type="number" id="height" placeholder="Enter new height (px)" />
+    <button onclick="convertImage()">Convert Image</button>
 
-        <!-- Result Section -->
-        <div id="resultContainer" style="display: none;">
-            <p>Generated Link:</p>
-            <a id="generatedLink" href="#" target="_blank">Click to View Image</a>
-            <button id="copyBtn">Copy Link</button>
-        </div>
+    <div class="image-preview" id="image-preview"></div>
+</div>
 
-        <!-- Image Preview -->
-        <div id="previewContainer" style="display: none;">
-            <p>Image Preview:</p>
-            <img id="previewImage" src="" alt="Image Preview">
-        </div>
-    </div>
-    <script src="script.js"></script>
+<div class="container" id="background-remover">
+    <h2>Premium Background Remover</h2>
+    <input type="file" id="bg-upload" />
+    <button onclick="removeBackground()">Remove Background</button>
+
+    <div class="image-preview" id="bg-image-preview"></div>
+</div>
+
+<footer>
+    <p>&copy; 2025 <a href="#">Premium Image Services</a>. All rights reserved.</p>
+</footer>
+
+<script>
+    function convertImage() {
+        const fileInput = document.getElementById("image-upload");
+        const width = document.getElementById("width").value;
+        const height = document.getElementById("height").value;
+        const preview = document.getElementById("image-preview");
+
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = function() {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const newImage = canvas.toDataURL("image/png");
+
+                    preview.innerHTML = `<img src="${newImage}" alt="Converted Image" />`;
+                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="converted-image.png">Download</a>`;
+                };
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+    function removeBackground() {
+        const fileInput = document.getElementById("bg-upload");
+        const preview = document.getElementById("bg-image-preview");
+
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+
+                img.onload = function() {
+                    // Background removal logic (here we're assuming background removal via an API or JS library)
+                    // For now, we'll just display the image to simulate the effect
+                    preview.innerHTML = `<img src="${img.src}" alt="Image without background" />`;
+                    preview.innerHTML += `<a class="download-btn" href="${img.src}" download="image-without-background.png">Download</a>`;
+                };
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>
+
 </body>
 </html>
