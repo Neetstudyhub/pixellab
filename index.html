@@ -3,396 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Image Editor</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f7c4e3, #e1bee7);
-            color: #333;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        nav {
-            background: #1e1e1e;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: 0.3s;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 30px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        nav a:hover {
-            text-decoration: underline;
-            color: #ff6f61;
-        }
-        .menu-icon {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-            color: white;
-        }
-        .menu-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .menu-links a {
-            margin: 0 15px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            transform: translateY(20px);
-            transition: transform 0.3s ease-in-out;
-        }
-        .container:hover {
-            transform: translateY(0);
-        }
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        input[type="file"], input[type="number"], input[type="text"], select, button {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            transition: border-color 0.3s ease;
-        }
-        input[type="file"]:hover, input[type="number"]:hover, select:hover, button:hover {
-            border-color: #ff6f61;
-        }
-        button {
-            background-color: #ff6f61;
-            color: white;
-            font-size: 16px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #e04e44;
-        }
-        .image-preview {
-            margin-top: 30px;
-            text-align: center;
-            position: relative;
-        }
-        img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .download-btn {
-            display: inline-block;
-            margin-top: 20px;
-            background-color: #28a745;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .download-btn:hover {
-            background-color: #218838;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        footer a {
-            color: #ff6f61;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .menu-links {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-            }
-            .menu-links a {
-                margin: 10px 0;
-            }
-            .menu-icon {
-                display: block;
-            }
-            nav.active .menu-links {
-                display: flex;
-            }
-        }
-    </style>
+    <meta name="description" content="PixelLab - Your Digital Creativity Partner">
+    <title>PixelLab - Design and Development</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav>
-    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
-    <div class="menu-links">
-        <a href="#resize">Resize Image</a>
-        <a href="#rotate">Rotate Image</a>
-        <a href="#crop">Crop Image</a>
-        <a href="#text">Add Text to Image</a>
-        <a href="#border">Add Border to Image</a>
-    </div>
-</nav>
+    <header>
+        <div class="logo">PixelLab</div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" id="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </header>
 
-<!-- Content Sections -->
-<!-- Resize Image -->
-<div class="container" id="resize">
-    <h2>Resize Your Image</h2>
-    <input type="file" id="resize-upload" />
-    <input type="number" id="resize-width" placeholder="Enter new width (px)" />
-    <input type="number" id="resize-height" placeholder="Enter new height (px)" />
-    <button onclick="resizeImage()">Resize Image</button>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <h1>Transform Your Ideas Into Stunning Designs</h1>
+                <p>We bring your vision to life with modern, creative, and impactful designs.</p>
+                <a href="#contact" class="cta-btn">Get in Touch</a>
+            </div>
+        </section>
 
-    <div id="resize-info"></div>
-    <div class="image-preview" id="resize-preview"></div>
-</div>
+        <!-- Services Cards -->
+        <section id="services" class="section-padding">
+            <h2>Our Expertise</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Web Design</h3>
+                    <p>Responsive, user-friendly websites built to impress.</p>
+                </div>
+                <div class="card">
+                    <h3>Branding</h3>
+                    <p>Powerful branding strategies to establish your unique identity.</p>
+                </div>
+                <div class="card">
+                    <h3>App Development</h3>
+                    <p>Innovative apps for a seamless user experience across devices.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-<!-- Rotate Image -->
-<div class="container" id="rotate">
-    <h2>Rotate Your Image</h2>
-    <input type="file" id="rotate-upload" />
-    <select id="rotate-select">
-        <option value="90">90°</option>
-        <option value="180">180°</option>
-        <option value="270">270°</option>
-    </select>
-    <button onclick="rotateImage()">Rotate Image</button>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 PixelLab. All rights reserved.</p>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
 
-    <div class="image-preview" id="rotate-preview"></div>
-</div>
-
-<!-- Crop Image -->
-<div class="container" id="crop">
-    <h2>Crop Your Image</h2>
-    <input type="file" id="crop-upload" />
-    <input type="number" id="crop-x" placeholder="X Position" />
-    <input type="number" id="crop-y" placeholder="Y Position" />
-    <input type="number" id="crop-width" placeholder="Width" />
-    <input type="number" id="crop-height" placeholder="Height" />
-    <button onclick="cropImage()">Crop Image</button>
-
-    <div class="image-preview" id="crop-preview"></div>
-</div>
-
-<!-- Add Text to Image -->
-<div class="container" id="text">
-    <h2>Add Text to Your Image</h2>
-    <input type="file" id="text-upload" />
-    <input type="text" id="text-input" placeholder="Enter your text" />
-    <button onclick="addTextToImage()">Add Text</button>
-
-    <div class="image-preview" id="text-preview"></div>
-</div>
-
-<!-- Add Border to Image -->
-<div class="container" id="border">
-    <h2>Add Border to Your Image</h2>
-    <input type="file" id="border-upload" />
-    <input type="number" id="border-thickness" placeholder="Enter border thickness (px)" />
-    <input type="color" id="border-color" value="#000000" />
-    <button onclick="addBorder()">Add Border</button>
-
-    <div class="image-preview" id="border-preview"></div>
-</div>
-
-<footer>
-    <p>&copy; 2025 <a href="#">Premium Image Services</a>. All rights reserved.</p>
-</footer>
-
-<script>
-    // Toggle menu visibility on small screens
-    function toggleMenu() {
-        const nav = document.querySelector('nav');
-        nav.classList.toggle('active');
-    }
-
-    // Resize Image
-    function resizeImage() {
-        const fileInput = document.getElementById('resize-upload');
-        const width = document.getElementById('resize-width').value;
-        const height = document.getElementById('resize-height').value;
-        const preview = document.getElementById('resize-preview');
-        const info = document.getElementById('resize-info');
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = width || img.width;
-                    canvas.height = height || img.height;
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                    const newImage = canvas.toDataURL();
-                    preview.innerHTML = `<img src="${newImage}" alt="Resized Image" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="resized-image.png">Download</a>`;
-
-                    info.innerHTML = `New Size: ${canvas.width} x ${canvas.height}px`;
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-    // Rotate Image
-    function rotateImage() {
-        const fileInput = document.getElementById('rotate-upload');
-        const degree = document.getElementById('rotate-select').value;
-        const preview = document.getElementById('rotate-preview');
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = img.height;
-                    canvas.height = img.width;
-                    ctx.translate(canvas.width / 2, canvas.height / 2);
-                    ctx.rotate((degree * Math.PI) / 180);
-                    ctx.drawImage(img, -img.width / 2, -img.height / 2);
-                    const newImage = canvas.toDataURL();
-                    preview.innerHTML = `<img src="${newImage}" alt="Rotated Image" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="rotated-image.png">Download</a>`;
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-    // Crop Image
-    function cropImage() {
-        const fileInput = document.getElementById('crop-upload');
-        const x = document.getElementById('crop-x').value;
-        const y = document.getElementById('crop-y').value;
-        const width = document.getElementById('crop-width').value;
-        const height = document.getElementById('crop-height').value;
-        const preview = document.getElementById('crop-preview');
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = width;
-                    canvas.height = height;
-                    ctx.drawImage(img, x, y, width, height, 0, 0, width, height);
-
-                    const newImage = canvas.toDataURL();
-                    preview.innerHTML = `<img src="${newImage}" alt="Cropped Image" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="cropped-image.png">Download</a>`;
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-    // Add Text to Image
-    function addTextToImage() {
-        const fileInput = document.getElementById('text-upload');
-        const text = document.getElementById('text-input').value;
-        const preview = document.getElementById('text-preview');
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    ctx.drawImage(img, 0, 0);
-                    ctx.font = '36px Arial';
-                    ctx.fillStyle = 'white';
-                    ctx.textAlign = 'center';
-                    ctx.fillText(text, canvas.width / 2, canvas.height - 30);
-
-                    const newImage = canvas.toDataURL();
-                    preview.innerHTML = `<img src="${newImage}" alt="Image with Text" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="image-with-text.png">Download</a>`;
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-
-    // Add Border to Image
-    function addBorder() {
-        const fileInput = document.getElementById('border-upload');
-        const thickness = document.getElementById('border-thickness').value;
-        const color = document.getElementById('border-color').value;
-        const preview = document.getElementById('border-preview');
-
-        if (fileInput.files && fileInput.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.src = e.target.result;
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.width = img.width + thickness * 2;
-                    canvas.height = img.height + thickness * 2;
-                    ctx.fillStyle = color;
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(img, thickness, thickness);
-
-                    const newImage = canvas.toDataURL();
-
-                    preview.innerHTML = `<img src="${newImage}" alt="Image with Border" />`;
-                    preview.innerHTML += `<a class="download-btn" href="${newImage}" download="bordered-image.png">Download</a>`;
-                };
-            };
-            reader.readAsDataURL(fileInput.files[0]);
-        }
-    }
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
