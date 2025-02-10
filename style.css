@@ -1,61 +1,145 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+/* --- Global Styling & CSS Variables --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #28a745;
+  --secondary-hover: #218838;
+
+  --bg-light: #f4f4f4;
+  --bg-dark: #121212;
+  --container-bg: #fff;
+  --container-bg-dark: #1e1e1e;
+
+  --text-light: #333;
+  --text-dark: #e0e0e0;
+  --shadow-light: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 8px 16px rgba(0, 0, 0, 0.6);
+
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
+/* --- Global Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--bg-light), #e0e0e0);
+  color: var(--text-light);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* --- Main Container --- */
+.container {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 30px;
+  background: var(--container-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-light);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
 }
 
 h1 {
-    margin: 0;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: var(--primary-color);
 }
 
-a {
-    color: white;
-    text-decoration: none;
+/* --- Buttons & Inputs --- */
+.upload-btn {
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 12px;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.tools {
-    padding: 20px;
+.upload-btn:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
 }
 
-.tool-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+/* --- Select Dropdown --- */
+select {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin: 10px auto;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
 }
 
-.tool-card {
-    background-color: white;
-    padding: 20px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-decoration: none;
-    color: black;
+select:focus {
+  border-color: var(--primary-color);
+  outline: none;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+/* --- Download Button --- */
+.download-btn {
+  display: none;
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  background: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-canvas {
-    max-width: 100%;
-    border: 1px solid #ccc;
+.download-btn:hover {
+  background: var(--secondary-hover);
+  transform: scale(1.05);
 }
 
-.tool-container {
-    padding: 20px;
+/* --- Dark Mode --- */
+.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.dark-mode .container {
+  background: var(--container-bg-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.dark-mode .upload-btn {
+  background: #3a3a3a;
+}
+
+.dark-mode .upload-btn:hover {
+  background: #5a5a5a;
+}
+
+.dark-mode .download-btn {
+  background: #4caf50;
+}
+
+.dark-mode .download-btn:hover {
+  background: #43a047;
 }
