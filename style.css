@@ -1,24 +1,21 @@
-/* --- Global Styling & CSS Variables --- */
+/* --- Global Variables --- */
 :root {
   --primary-color: #007bff;
   --primary-hover: #0056b3;
   --secondary-color: #28a745;
   --secondary-hover: #218838;
-
   --bg-light: #f4f4f4;
   --bg-dark: #121212;
   --container-bg: #fff;
   --container-bg-dark: #1e1e1e;
-
   --text-light: #333;
   --text-dark: #e0e0e0;
   --shadow-light: 0 8px 16px rgba(0, 0, 0, 0.1);
   --shadow-dark: 0 8px 16px rgba(0, 0, 0, 0.6);
-
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* --- Global Reset --- */
+/* --- Reset and Body Styling --- */
 * {
   margin: 0;
   padding: 0;
@@ -36,7 +33,7 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* --- Main Container --- */
+/* --- Container Styling --- */
 .container {
   max-width: 700px;
   margin: 80px auto;
@@ -58,7 +55,7 @@ h1 {
   color: var(--primary-color);
 }
 
-/* --- Buttons & Inputs --- */
+/* --- Upload Button & Input --- */
 .upload-btn {
   display: inline-block;
   width: 100%;
@@ -79,21 +76,26 @@ h1 {
   transform: scale(1.05);
 }
 
-/* --- Select Dropdown --- */
-select {
+/* --- Image Preview Styling --- */
+#preview-container {
   width: 100%;
   max-width: 300px;
-  padding: 10px;
-  margin: 10px auto;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 1em;
-  transition: border-color 0.3s ease;
+  margin: 20px auto;
+  display: none;
 }
 
-select:focus {
-  border-color: var(--primary-color);
-  outline: none;
+#preview {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+}
+
+/* --- Status Message --- */
+#uploadStatus {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  font-weight: bold;
 }
 
 /* --- Download Button --- */
@@ -126,20 +128,4 @@ select:focus {
 .dark-mode .container {
   background: var(--container-bg-dark);
   box-shadow: var(--shadow-dark);
-}
-
-.dark-mode .upload-btn {
-  background: #3a3a3a;
-}
-
-.dark-mode .upload-btn:hover {
-  background: #5a5a5a;
-}
-
-.dark-mode .download-btn {
-  background: #4caf50;
-}
-
-.dark-mode .download-btn:hover {
-  background: #43a047;
 }
