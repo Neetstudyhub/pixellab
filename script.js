@@ -1,18 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
     let darkModeToggle = document.getElementById("darkModeToggle");
     let dropZone = document.getElementById("dropZone");
+    let fileInput = document.getElementById("imageInput");
 
-    // Dark Mode Toggle
-    darkModeToggle.addEventListener("change", function () {
-        document.body.classList.toggle("dark-mode");
-    });
+    // Hamburger Menu Toggle
+    window.toggleMenu = function() {
+        document.querySelector(".nav-links").classList.toggle("show");
+    }
+
+    // Open file picker when clicking on Drop Zone
+    dropZone.addEventListener("click", () => fileInput.click());
 
     // Drag & Drop Upload
-    dropZone.addEventListener("click", () => document.getElementById("imageInput").click());
-    dropZone.addEventListener("dragover", (e) => e.preventDefault());
+    dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("active");
+    });
+
+    dropZone.addEventListener("dragleave", () => dropZone.classList.remove("active"));
+
     dropZone.addEventListener("drop", (e) => {
         e.preventDefault();
-        document.getElementById("imageInput").files = e.dataTransfer.files;
+        dropZone.classList.remove("active");
+        fileInput.files = e.dataTransfer.files;
+        convertImage(); // Auto-convert after drop
+    });
+
+    // Detect file selection from gallery
+    fileInput.addEventListener("change", function () {
+        if (fileInput.files.length > 0) {
+            convertImage();
+        }
     });
 });
 
