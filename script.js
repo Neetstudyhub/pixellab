@@ -19,11 +19,16 @@ function convertImage() {
             let canvas = document.createElement('canvas');
             let ctx = canvas.getContext('2d');
 
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
+            // Resize if too large
+            let maxWidth = 1200;  // Resize large images to 1200px width (for optimization)
+            let scaleFactor = img.width > maxWidth ? maxWidth / img.width : 1;
+            canvas.width = img.width * scaleFactor;
+            canvas.height = img.height * scaleFactor;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            let convertedImage = canvas.toDataURL(`image/${format}`, 0.8);
+            // Adjust quality for JPG & WEBP
+            let quality = (format === "jpeg" || format === "webp") ? 0.7 : 1.0;
+            let convertedImage = canvas.toDataURL(`image/${format}`, quality);
 
             // Show preview
             imagePreview.src = convertedImage;
@@ -31,8 +36,6 @@ function convertImage() {
 
             // Get original file name without extension
             let originalFileName = file.name.split('.').slice(0, -1).join('.');
-            
-            // Set correct download name
             let finalFileName = originalFileName + "." + format;
 
             // Set download link
