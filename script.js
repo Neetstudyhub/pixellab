@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         dropZone.classList.remove("active");
         fileInput.files = e.dataTransfer.files;
-        convertImage(); // Auto-convert after drop
+        convertImage();
     });
 
-    // Detect file selection from gallery
+    // Detect file selection
     fileInput.addEventListener("change", function () {
         if (fileInput.files.length > 0) {
             convertImage();
@@ -38,6 +38,7 @@ function convertImage() {
     let format = document.getElementById('formatSelect').value;
     let downloadLink = document.getElementById('downloadLink');
     let imagePreview = document.getElementById('imagePreview');
+    let previewBox = document.getElementById('previewBox');
 
     if (fileInput.files.length === 0) {
         alert("Please upload an image first.");
@@ -54,14 +55,14 @@ function convertImage() {
             let canvas = document.createElement('canvas');
             let ctx = canvas.getContext('2d');
 
-            canvas.width = img.width > 1200 ? 1200 : img.width;
-            canvas.height = img.height > 1200 ? (img.height * 1200 / img.width) : img.height;
+            canvas.width = img.width > 800 ? 800 : img.width;
+            canvas.height = img.height > 800 ? (img.height * 800 / img.width) : img.height;
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            let convertedImage = canvas.toDataURL(`image/${format}`, 0.7);
+            let convertedImage = canvas.toDataURL(`image/${format}`, 0.8);
 
             imagePreview.src = convertedImage;
-            imagePreview.style.display = "block";
+            previewBox.style.display = "block"; // Show preview box
             downloadLink.href = convertedImage;
             downloadLink.download = `converted.${format}`;
             downloadLink.style.display = "block";
