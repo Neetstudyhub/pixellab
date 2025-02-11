@@ -7,21 +7,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle">
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
     <div class="container">
         <h1>Convert Your Image Instantly</h1>
         <p>Upload an image and convert it to your preferred format.</p>
 
-        <div class="upload-section">
-            <input type="file" id="imageInput" accept="image/*">
-            <select id="formatSelect">
-                <option value="jpeg">JPG</option>
-                <option value="png">PNG</option>
-                <option value="webp">WEBP</option>
-                <option value="bmp">BMP</option>
-                <option value="gif">GIF</option>
-            </select>
-            <button onclick="convertImage()">Convert</button>
+        <!-- Drag & Drop Upload Box -->
+        <div class="drop-zone" id="dropZone">
+            <p>Drag & Drop your image here or <b>Click to Upload</b></p>
+            <input type="file" id="imageInput" accept="image/*" hidden>
         </div>
+
+        <select id="formatSelect">
+            <option value="jpeg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="webp">WEBP</option>
+            <option value="bmp">BMP</option>
+            <option value="gif">GIF</option>
+        </select>
+
+        <button onclick="convertImage()">Convert</button>
 
         <div class="preview-section">
             <h3>Preview:</h3>
