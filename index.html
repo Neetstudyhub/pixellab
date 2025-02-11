@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixellab - Free Image Converter</title>
+    <title>Pixellab - Image Converter</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
 <body>
 
-    <!-- Header with Logo & Navigation -->
+    <!-- Header -->
     <header>
         <div class="logo">Pixellab</div>
         <nav>
@@ -23,9 +23,9 @@
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Section -->
     <main class="container">
-        <h1>Upload & Convert Your Image Instantly</h1>
+        <h1>Upload & Convert Your Image</h1>
         <p>Supports JPG, PNG, BMP, GIF, WEBP formats.</p>
 
         <!-- Drag & Drop Upload Box -->
@@ -44,13 +44,16 @@
 
         <button onclick="convertImage()">Convert</button>
 
-        <div class="preview-section">
+        <!-- Image Preview Box -->
+        <div class="preview-section" id="previewBox" style="display: none;">
             <h3>Preview:</h3>
-            <img id="imagePreview" src="" alt="Image Preview">
+            <div class="preview-container">
+                <img id="imagePreview" src="" alt="Image Preview">
+            </div>
         </div>
 
         <div class="download-section">
-            <a id="downloadLink" style="display: none;" download>Download Converted Image</a>
+            <a id="downloadLink" style="display: none;" download>Download Image</a>
         </div>
     </main>
 
