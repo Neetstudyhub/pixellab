@@ -29,9 +29,15 @@ function convertImage() {
             imagePreview.src = convertedImage;
             imagePreview.style.display = "block";
 
+            // Get original file name without extension
+            let originalFileName = file.name.split('.').slice(0, -1).join('.');
+            
+            // Set correct download name
+            let finalFileName = originalFileName + "." + format;
+
             // Set download link
             downloadLink.href = convertedImage;
-            downloadLink.download = `converted-image.${format}`;
+            downloadLink.download = finalFileName;
             downloadLink.style.display = "block";
         }
     };
