@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let darkModeToggle = document.getElementById("darkModeToggle");
     let dropZone = document.getElementById("dropZone");
     let fileInput = document.getElementById("imageInput");
 
