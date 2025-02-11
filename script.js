@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function () {
+    let darkModeToggle = document.getElementById("darkModeToggle");
+    let dropZone = document.getElementById("dropZone");
+
+    // Dark Mode Toggle
+    darkModeToggle.addEventListener("change", function () {
+        document.body.classList.toggle("dark-mode");
+    });
+
+    // Drag & Drop Upload
+    dropZone.addEventListener("click", () => document.getElementById("imageInput").click());
+    dropZone.addEventListener("dragover", (e) => e.preventDefault());
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        document.getElementById("imageInput").files = e.dataTransfer.files;
+    });
+});
+
 function convertImage() {
     let fileInput = document.getElementById('imageInput');
     let format = document.getElementById('formatSelect').value;
@@ -19,28 +37,16 @@ function convertImage() {
             let canvas = document.createElement('canvas');
             let ctx = canvas.getContext('2d');
 
-            // Resize if too large
-            let maxWidth = 1200;  // Resize large images to 1200px width (for optimization)
-            let scaleFactor = img.width > maxWidth ? maxWidth / img.width : 1;
-            canvas.width = img.width * scaleFactor;
-            canvas.height = img.height * scaleFactor;
+            canvas.width = img.width > 1200 ? 1200 : img.width;
+            canvas.height = img.height > 1200 ? (img.height * 1200 / img.width) : img.height;
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            // Adjust quality for JPG & WEBP
-            let quality = (format === "jpeg" || format === "webp") ? 0.7 : 1.0;
-            let convertedImage = canvas.toDataURL(`image/${format}`, quality);
+            let convertedImage = canvas.toDataURL(`image/${format}`, 0.7);
 
-            // Show preview
             imagePreview.src = convertedImage;
             imagePreview.style.display = "block";
-
-            // Get original file name without extension
-            let originalFileName = file.name.split('.').slice(0, -1).join('.');
-            let finalFileName = originalFileName + "." + format;
-
-            // Set download link
             downloadLink.href = convertedImage;
-            downloadLink.download = finalFileName;
+            downloadLink.download = `converted.${format}`;
             downloadLink.style.display = "block";
         }
     };
