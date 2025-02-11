@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixellab - Image Converter</title>
+    <title>Pixellab - Free Image Converter</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <div class="theme-toggle">
-        <label class="switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-        </label>
-    </div>
 
-    <div class="container">
-        <h1>Convert Your Image Instantly</h1>
-        <p>Upload an image and convert it to your preferred format.</p>
+    <!-- Header with Logo & Navigation -->
+    <header>
+        <div class="logo">Pixellab</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tools</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>Upload & Convert Your Image Instantly</h1>
+        <p>Supports JPG, PNG, BMP, GIF, WEBP formats.</p>
 
         <!-- Drag & Drop Upload Box -->
         <div class="drop-zone" id="dropZone">
-            <p>Drag & Drop your image here or <b>Click to Upload</b></p>
+            <p>Drag & Drop an image or <b>Click to Upload</b></p>
             <input type="file" id="imageInput" accept="image/*" hidden>
         </div>
 
@@ -43,8 +52,12 @@
         <div class="download-section">
             <a id="downloadLink" style="display: none;" download>Download Converted Image</a>
         </div>
-    </div>
+    </main>
 
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Pixellab | All Rights Reserved</p>
+    </footer>
+
 </body>
 </html>
