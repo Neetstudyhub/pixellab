@@ -1,51 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free Online Image Converter - Convert images to JPG, PNG, BMP, GIF, WEBP quickly.">
-  <title>Image Converter Tool</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixellab - Image Converter</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Image Converter Tool</h1>
-    <p>Upload an image and convert it to different formats instantly.</p>
+    <div class="container">
+        <h1>Convert Your Image Instantly</h1>
+        <p>Upload an image and convert it to your preferred format.</p>
 
-    <!-- Image Upload Input -->
-    <input type="file" id="uploadImage" accept="image/*" class="upload-btn" />
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*">
+            <select id="formatSelect">
+                <option value="jpeg">JPG</option>
+                <option value="png">PNG</option>
+                <option value="webp">WEBP</option>
+                <option value="bmp">BMP</option>
+                <option value="gif">GIF</option>
+            </select>
+            <button onclick="convertImage()">Convert</button>
+        </div>
 
-    <!-- Image Preview -->
-    <div id="preview-container">
-      <img id="preview" src="" alt="Image Preview">
+        <div class="preview-section">
+            <h3>Preview:</h3>
+            <img id="imagePreview" src="" alt="Image Preview">
+        </div>
+
+        <div class="download-section">
+            <a id="downloadLink" style="display: none;" download>Download Converted Image</a>
+        </div>
     </div>
 
-    <!-- Upload Status -->
-    <p id="uploadStatus"></p>
-
-    <!-- Format Selection -->
-    <label for="format">Convert to:</label>
-    <select id="format">
-      <option value="png">PNG</option>
-      <option value="jpg">JPG</option>
-      <option value="webp">WEBP</option>
-      <option value="gif">GIF</option>
-      <option value="bmp">BMP</option>
-    </select>
-
-    <!-- Convert Button -->
-    <button id="convert" class="upload-btn">Convert Image</button>
-
-    <!-- Hidden Canvas -->
-    <canvas id="canvas" style="display:none;"></canvas>
-
-    <!-- Download Button -->
-    <a id="downloadLink" class="download-btn" download>Download Converted Image</a>
-
-    <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle" class="upload-btn">Toggle Dark Mode</button>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
