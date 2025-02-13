@@ -1,125 +1,272 @@
-/* Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-/* Light Theme */
+/* General Styles */
 body {
-    background: #f4f4f4;
-    transition: 0.3s;
+  margin: 0;
+  font-family: 'Poppins', sans-serif; /* Default font for the website */
+  line-height: 1.6;
+  background-color: #f4f4f9;
+  color: #333;
 }
 
-/* Dark Theme */
-body.dark-mode {
-    background: #181818;
-    color: #ffffff;
-}
-
-/* Header */
+/* Header with Navbar */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #007bff;
-    padding: 15px 20px;
-    color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #0066cc;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
+header .logo {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
+header .nav-links {
+  display: flex;
+  gap: 15px;
 }
 
-.nav-links li {
-    margin: 0 15px;
+header .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
+header .nav-links a:hover {
+  text-decoration: underline;
 }
 
-.nav-links a:hover {
-    color: #ffeb3b;
+header .hamburger {
+  font-size: 1.5em;
+  cursor: pointer;
+  display: none;
 }
 
-/* Hamburger Menu */
-.hamburger {
+/* Sidebar */
+aside {
+  width: 250px;
+  height: 100vh;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  transition: left 0.3s;
+  z-index: 11;
+  padding-top: 60px;
+}
+
+aside nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+aside nav ul li {
+  border-bottom: 1px solid #444;
+}
+
+aside nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  transition: background 0.3s;
+}
+
+aside nav ul li a:hover {
+  background-color: #555;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #e8f5ff; /* Light blue background for contrast */
+  border-bottom: 2px solid #0066cc;
+}
+
+.hero h1 {
+  font-family: 'Roboto Slab', serif; /* Special font for Hero Section */
+  font-size: 2.5em;
+  color: #0066cc;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Content Section */
+.content {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  header .hamburger {
+    display: block;
+  }
+
+  header .nav-links {
     display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
+  }
 
-/* Container */
-.container {
-    text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 500px;
-    margin: 20px auto;
-}
+  aside {
+    width: 200px;
+  }
 
-/* Drop Zone */
-.drop-zone {
-    border: 2px dashed #007bff;
-    padding: 30px;
-    cursor: pointer;
-    margin-bottom: 10px;
+  aside.open {
+    left: 0;
+  }
 }
-
-.drop-zone:hover {
-    background: rgba(0, 123, 255, 0.1);
-}
-
-/* Buttons */
-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-/* Preview Box */
-.preview-container {
-    width: 250px;
-    height: 250px;
-    border: 2px solid #007bff;
-    margin: 10px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.preview-container img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
 /* Footer */
 footer {
-    text-align: center;
-    background: #007bff;
-    color: white;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 20px 10px;
+  margin-top: 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #ffcc00; /* Accent color for headings */
+}
+
+.footer-section p {
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #ffcc00; /* Hover effect */
+}
+
+.social-links a {
+  display: inline-block;
+  margin-right: 10px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #ffcc00;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+
+/* Featured Resources Container */
+.card-container {
+  display: flex; /* Flexbox for consistent alignment */
+  flex-wrap: wrap; /* Ensures cards wrap to the next row when needed */
+  justify-content: space-between; /* Proper spacing between cards */
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px; /* Keeps container within a proper width */
+  gap: 20px; /* Adds spacing between cards */
+  box-sizing: border-box;
+}
+
+/* Individual Cards */
+.card {
+  flex: 1 1 calc(50% - 20px); /* Each card takes 50% of the width minus the gap */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #0066cc;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card a:hover {
+  background-color: #0066cc;
+  color: #fff;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 100%; /* Cards take full width on mobile */
+  }
 }
