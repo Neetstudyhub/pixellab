@@ -1,66 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixellab - Image Converter</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEET Study Hub</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Header with Navbar -->
+  <header>
+    <div class="logo">NEET Study Hub</div>
+    <div class="hamburger" id="hamburger">☰</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Subjects</a>
+      <a href="#">Mock Tests</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">Pixellab</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Tools</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-    </header>
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Subjects</a></li>
+        <li><a href="#">Mock Tests</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
 
-    <!-- Main Section -->
-    <main class="container">
-        <h1>Upload & Convert Your Image</h1>
-        <p>Supports JPG, PNG, BMP, GIF, WEBP formats.</p>
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to NEET Study Hub</h1>
+      <p>Your one-stop solution for NEET preparation. Start learning today with expert guidance!</p>
+    </section>
 
-        <!-- Drag & Drop Upload Box -->
-        <div class="drop-zone" id="dropZone">
-            <p>Drag & Drop an image or <b>Click to Upload</b></p>
-            <input type="file" id="imageInput" accept="image/*">
+    <!-- Featured Resources Section -->
+    <section class="content">
+      <h2 class="section-title">Featured Resources</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>Biology Notes</h3>
+          <p>Comprehensive NEET Biology notes to help you grasp every concept effectively.</p>
+          <a href="#">Explore More</a>
         </div>
-
-        <select id="formatSelect">
-            <option value="jpeg">JPG</option>
-            <option value="png">PNG</option>
-            <option value="webp">WEBP</option>
-            <option value="bmp">BMP</option>
-            <option value="gif">GIF</option>
-        </select>
-
-        <button onclick="convertImage()">Convert</button>
-
-        <!-- Image Preview Box -->
-        <div class="preview-section" id="previewBox" style="display: none;">
-            <h3>Preview:</h3>
-            <div class="preview-container">
-                <img id="imagePreview" src="" alt="Image Preview">
-            </div>
+        <div class="card">
+          <h3>Physics Formula Sheets</h3>
+          <p>Get access to the most important formulas and shortcuts for NEET Physics.</p>
+          <a href="#">Explore More</a>
         </div>
-
-        <div class="download-section">
-            <a id="downloadLink" style="display: none;" download>Download Image</a>
+        <div class="card">
+          <h3>Chemistry Mock Tests</h3>
+          <p>Test your knowledge with topic-wise and full-length mock tests for NEET Chemistry.</p>
+          <a href="#">Explore More</a>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Pixellab | All Rights Reserved</p>
-    </footer>
+    <!-- Why Choose Us Section -->
+    <section class="why-us">
+      <h2 class="section-title">Why Choose Us?</h2>
+      <div class="card-container">
+        <div class="card">
+          <h3>Expert Faculty</h3>
+          <p>Learn from experienced educators who specialize in NEET preparation.</p>
+        </div>
+        <div class="card">
+          <h3>Personalized Study Plans</h3>
+          <p>Custom-tailored plans to fit your schedule and optimize learning.</p>
+        </div>
+        <div class="card">
+          <h3>Proven Success</h3>
+          <p>Our students consistently achieve top ranks in NEET. Be one of them!</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <h2 class="section-title">What Our Students Say</h2>
+      <div class="card-container">
+        <div class="card">
+          <p>"NEET Study Hub has been a game-changer for my preparation. The notes and mock tests are exceptional!"</p>
+          <h4>- Priya Sharma</h4>
+        </div>
+        <div class="card">
+          <p>"The personalized study plans helped me focus on my weak areas. Highly recommend this platform!"</p>
+          <h4>- Ankit Verma</h4>
+        </div>
+        <div class="card">
+          <p>"Thanks to NEET Study Hub, I scored 99 percentile. Their resources are top-notch!"</p>
+          <h4>- Sneha Gupta</h4>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>NEET Study Hub is your one-stop destination for acing the NEET exam with expert-curated study materials and mock tests.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Subjects</a></li>
+          <li><a href="#">Mock Tests</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NEET Study Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
