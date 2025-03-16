@@ -819,7 +819,7 @@ a{
   margin-top: 20px;
 }
 
-/* Label links with transparent background and premium styling */
+/* Label buttons with transparent background and premium styling */
 .label-btn {
   background-color: transparent;
   color: #3498db;
@@ -840,6 +840,7 @@ a{
   justify-content: center; /* Centers content (icon + text) */
   gap: 8px; /* Space between icon and text */
   text-decoration: none; /* Remove underline from links */
+  flex: 0 0 calc(33.333% - 15px); /* Ensure 3 buttons per row with gap consideration */
 }
 
 /* Adjust the size of the folder icon */
@@ -868,10 +869,22 @@ a{
 }
 
 /* Responsive design for smaller screens */
+@media (max-width: 1024px) {
+  .label-btn {
+    padding: 8px 18px; /* Reduced padding for mobile */
+    font-size: 13px; /* Slightly smaller font size for mobile */
+    flex: 0 0 calc(33.333% - 15px); /* 3 buttons per row on tablets */
+  }
+  .label-btn i {
+    font-size: 14px; /* Smaller icon size for mobile */
+  }
+}
+
 @media (max-width: 768px) {
   .label-btn {
     padding: 8px 18px; /* Reduced padding for mobile */
     font-size: 13px; /* Slightly smaller font size for mobile */
+    flex: 0 0 calc(50% - 15px); /* 2 buttons per row on medium screens */
   }
   .label-btn i {
     font-size: 14px; /* Smaller icon size for mobile */
@@ -882,6 +895,7 @@ a{
   .label-btn {
     padding: 6px 15px; /* Even smaller padding for very small screens */
     font-size: 12px; /* Small font size for very small screens */
+    flex: 0 0 100%; /* 1 button per row on very small screens */
   }
   .label-btn i {
     font-size: 12px; /* Very small icon for very small screens */
