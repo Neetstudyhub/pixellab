@@ -1,4 +1,4 @@
-const API_PROXY = "https://neetstudyhub-api-proxy.earnmoney100a.workers.dev";
+const API_PROXY = "https://broken-hall-68ac.earnmoney100a.workers.dev/";
 let nextPageToken = "";
 let prevPageToken = "";
 
