@@ -791,7 +791,7 @@ a{
 }
 
 /* labels */
-@media (min-width:769px) {
+@media (min-width:696px) {
   
 
 .label-container {
@@ -806,7 +806,7 @@ a{
 }
 }
 
-   @media (min-width: 451px) (max-width: 768px) {
+   @media (min-width: 451px) (max-width: 695px) {
   
 
 .label-container {
