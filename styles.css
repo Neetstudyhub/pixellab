@@ -789,3 +789,101 @@ a{
       margin-right: 5px;
       border-radius: 50%;
 }
+
+/* labels */
+
+.label-container {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.h2 {
+  text-align: center;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Labels section with flexbox layout */
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Label links with transparent background and premium styling */
+.label-btn {
+  background-color: transparent;
+  color: #3498db;
+  border: 2px solid #3498db;
+  padding: 10px 20px; /* Reduced padding for smaller buttons */
+  border-radius: 50px; /* Fully rounded corners */
+  cursor: pointer;
+  font-size: 14px; /* Reduced font size */
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers content (icon + text) */
+  gap: 8px; /* Space between icon and text */
+  text-decoration: none; /* Remove underline from links */
+}
+
+/* Adjust the size of the folder icon */
+.label-btn i {
+  font-size: 16px; /* Smaller icon size */
+}
+
+/* Hover effect */
+.label-btn:hover {
+  background-color: #3498db;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Focus effect (for accessibility) */
+.label-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.6);
+}
+
+/* Label button active state (clicked) */
+.label-btn:active {
+  transform: scale(1.05);
+  background-color: #2980b9;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .label-btn {
+    padding: 8px 18px; /* Reduced padding for mobile */
+    font-size: 13px; /* Slightly smaller font size for mobile */
+  }
+  .label-btn i {
+    font-size: 14px; /* Smaller icon size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .label-btn {
+    padding: 6px 15px; /* Even smaller padding for very small screens */
+    font-size: 12px; /* Small font size for very small screens */
+  }
+  .label-btn i {
+    font-size: 12px; /* Very small icon for very small screens */
+  }
+}
