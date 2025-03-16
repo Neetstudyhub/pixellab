@@ -791,13 +791,13 @@ a{
 }
 
 /* labels */
-@media (min-width:780px) {
+@media (min-width:769px) {
   
 
 .label-container {
-  width: 71%;
+  width: 48%;
   margin-left: 3px;
-  margin-right: 14px;
+  margin-right: 15px;
   margin-top: 26px;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -806,7 +806,7 @@ a{
 }
 }
 
-   @media (min-width: 400px) (max-width: 779px) {
+   @media (min-width: 400px) (max-width: 768px) {
   
 
 .label-container {
