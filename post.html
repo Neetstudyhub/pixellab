@@ -647,14 +647,17 @@ body{
 <body>
     <!-- Header with Navbar -->
     <header>
-      <div class="logo">NEET Study Hub</div>
+      <div class="logo">Jinvani</div>
       <div class="hamburger" id="hamburger">☰</div>
       <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="privacy.html">About</a>
-        <a href="#">Subjects</a>
-        <a href="#">Mock Tests</a>
-        <a href="blog.html">Contact</a>
+        <a href="#">Bhaktamar</a>
+        <a href="#">Aarti</a>
+        <a href="#">Pooja</a>
+        <a href="#">Jain Bhajan</a>
+        <a href="#">Stotra Path</a>
+        <a href="#">Jain Dharma</a>
+        <a href="#">Jain Mandir</a>
+        
       </nav>
     </header>
     
@@ -664,18 +667,26 @@ body{
         
         
         <div class="homesearch-bar">
-          Neet Study Hub
+          Jinvani
         </div>
         <button class="sidebar-close" id="closeSidebar">&times;</button>
       </div>
       <ul class="sidebar-menu">
         
         <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="privacy.html"><i class="fas fa-info-circle"></i> About</a></li>
-        <li><a href="#resources"><i class="fas fa-book"></i> Resources</a></li>
-        <li><a href="blog.html"><i class="fas fa-blog"></i> Blogs</a></li>
-        <li><a href="Test.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        
+        <li><a href="#"><i class="fas fa-book"></i> Bhaktamar</a></li>
+        <li><a href="#"><i class="fas fa-praying-hands"></i> Aarti</a></li>
+        <li><a href="#"><i class="fas fa-hand-holding-heart"></i> Pooja</a></li>
+        <li><a href="#"><i class="fas fa-om"></i> Stotra Path</a></li>
+        <li><a href="#"><i class="fas fa-music"></i> Jain Bhajan</a></li>
+        <li><a href="#"><i class="fas fa-university"></i> Jain Dharma</a></li>
+        <li><a href="#"><i class="fas fa-place-of-worship"></i> Jain Mandir</a></li>
+        
+        
+        
       </ul>
+      
       <div class="sidebar-footer">
         <div class="social-media">
           <a href="#" title="Facebook">
@@ -725,20 +736,18 @@ body{
     <div class="footer-container">
       <!-- About Us Column (Left) -->
       <div class="footer-section">
-        <h3>Neet Study Hub</h3>
-        <p>
-          Neet Study Hub is your trusted resource for exam preparation. We offer previous year questions (PYQ's), NCERT PDFs, informative blogs, and mock tests to help you succeed.
-        </p>
+        <h3>Jinvani</h3>
+<p><strong>Jinvani</strong> offers rich Jain devotional content: <strong>Chalisa</strong>, <strong>Bhajan</strong>, <strong>Pooja</strong>, <strong>Bhaktambar</strong>.</p>
+
       </div>
       <!-- Quick Links Column (Center) -->
       <div class="footer-section quick-link1">
         <h3>Quick Links</h3>
         <ul>
           <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="#"><i class="fas fa-book-open"></i>PYQ's</a></li>
-          <li><a href="#"><i class="fas fa-file-pdf"></i>NCERT PDF</a></li>
-          <li><a href="#"><i class="fas fa-blog"></i>Blogs</a></li>
-          <li><a href="#"><i class="fas fa-chalkboard-teacher"></i>Mock Test</a></li>
+ <li><a href="#"><i class="fas fa-music"></i> Jain Bhajan</a></li>
+ <li><a href="#"><i class="fas fa-place-of-worship"></i> Jain Mandir</a></li>
+
         </ul>
       </div>
       <!-- Follow Us Column (Right) -->
@@ -757,7 +766,7 @@ body{
     <!-- Footer Bottom Area -->
     <div class="footer-bottom">
       <div class="footer-copy">
-        © 2025 Neet Study Hub. All rights reserved.
+        © 2025 Jinvani. All rights reserved.
       </div>
       <div class="footer-pages">
         <a href="#">Privacy Policy</a>
@@ -768,109 +777,109 @@ body{
     </div>
   </footer>
 
+
   <!-- JavaScript -->
   
-  <script>
+<script>
   const cloudflareProxy = 'https://neetstudyhub-api-proxy.earnmoney100a.workers.dev'; // Cloudflare Worker URL
 
-// Get the postId from the URL
-const urlParams = new URLSearchParams(window.location.search);
-const postId = urlParams.get('postId');
+  // Get the postId from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get('postId');
 
-const breadcrumbs = document.getElementById('breadcrumbs');
-const postTitle = document.getElementById('post-title');
-const postMeta = document.getElementById('post-meta');
-const postContent = document.getElementById('post-content');
-const relatedPostsContainer = document.getElementById('related-posts');
+  const breadcrumbs = document.getElementById('breadcrumbs');
+  const postTitle = document.getElementById('post-title');
+  const postMeta = document.getElementById('post-meta');
+  const postContent = document.getElementById('post-content');
+  const relatedPostsContainer = document.getElementById('related-posts');
 
-// Fetch and display the post content
-async function fetchPost() {
-  try {
-    // Fetch post data via Cloudflare Worker
-    const response = await fetch(`${cloudflareProxy}?id=${postId}`);
-    const data = await response.json();
+  // Fetch and display the post content
+  async function fetchPost() {
+    try {
+      // Fetch post data via Cloudflare Worker
+      const response = await fetch(`${cloudflareProxy}?id=${postId}`);
+      const data = await response.json();
 
-    // Populate the post content
-    postTitle.textContent = data.title;
-    postMeta.innerHTML = `By - NEET Study Hub | Time: ${new Date(
-      data.published
-    ).toLocaleDateString()}`;
-    postContent.innerHTML = data.content;
+      // Populate the post content
+      postTitle.textContent = data.title;
+      postMeta.innerHTML = `By - Jinvani | Time: ${new Date(
+        data.published
+      ).toLocaleDateString()}`;
+      postContent.innerHTML = data.content;
 
-    // Set breadcrumbs
-breadcrumbs.innerHTML = `<a href="index.html">Home</a> › <a href="blog.html">All Posts</a>`;
+      // Set breadcrumbs
+      breadcrumbs.innerHTML = `<a href="index.html">Home</a> › <a href="blog.html">All Posts</a>`;
 
-    
-    // Fetch and display related posts
-    fetchRelatedPosts();
-  } catch (error) {
-    console.error('Error fetching the post:', error);
-    postContent.innerHTML = `<p>Error loading post. Please try again.</p>`;
-  }
-}
-
-// Fetch all posts and display 5 related posts excluding "ncert" and "pyq"
-async function fetchRelatedPosts() {
-  try {
-    // Fetch related posts data via Cloudflare Worker
-    const response = await fetch(`${cloudflareProxy}?maxResults=500`);
-    const data = await response.json();
-
-    if (data.items && data.items.length > 1) {
-      // Shuffle the posts randomly
-      const shuffledPosts = data.items.sort(() => 0.5 - Math.random());
-
-      // Select 5 posts (excluding the current post and posts with labels "ncert" or "pyq")
-      const excludedLabels = ['ncert', 'pyq'];
-      const selectedPosts = shuffledPosts
-        .filter(
-          (post) =>
-            post.id !== postId && // Exclude the current post
-            (!post.labels || !post.labels.some((label) => excludedLabels.includes(label.toLowerCase()))) // Exclude posts with specific labels
-        )
-        .slice(0, 5);
-
-      // Render the selected posts
-      const relatedPosts = selectedPosts.map((post) => {
-        const imageUrl =
-          post.images && post.images[0]
-            ? post.images[0].url
-            : extractImageFromContent(post.content);
-
-        return `
-          <div class="related-post-card">
-            <img src="${imageUrl}" alt="${post.title}">
-            <div class="related-card-content">
-              <a href="post.html?postId=${post.id}" target="_self">
-                <h3>${post.title}</h3>
-              </a>
-            </div>
-          </div>
-        `;
-      });
-
-      relatedPostsContainer.innerHTML = relatedPosts.join('');
-    } else {
-      relatedPostsContainer.innerHTML = '<p>No related posts found.</p>';
+      // Fetch and display related posts
+      fetchRelatedPosts();
+    } catch (error) {
+      console.error('Error fetching the post:', error);
+      postContent.innerHTML = `<p>Error loading post. Please try again.</p>`;
     }
-  } catch (error) {
-    console.error('Error fetching related posts:', error);
-    relatedPostsContainer.innerHTML = '<p>Error loading related posts.</p>';
   }
-}
 
-// Extract the first image from content
-function extractImageFromContent(content) {
-  const imgTagMatch = content.match(/<img[^>]+src="([^">]+)"/);
-  return imgTagMatch ? imgTagMatch[1] : 'https://via.placeholder.com/300x200';
-}
+  // Fetch all posts and display related posts with "jinvani" label in both small and large formats
+  async function fetchRelatedPosts() {
+    try {
+      // Fetch related posts data via Cloudflare Worker
+      const response = await fetch(`${cloudflareProxy}?maxResults=500`);
+      const data = await response.json();
 
-// Initialize
-document.addEventListener('DOMContentLoaded', fetchPost);
+      if (data.items && data.items.length > 1) {
+        // Shuffle the posts randomly
+        const shuffledPosts = data.items.sort(() => 0.5 - Math.random());
 
+        // Select posts with label "jinvani" and exclude the current post
+        const selectedPosts = shuffledPosts
+          .filter(
+            (post) =>
+              post.id !== postId && // Exclude the current post
+              post.labels && post.labels.some((label) => label.toLowerCase() === 'jinvani') // Only posts with "jinvani" label
+          )
+          .slice(0, 5); // Display a maximum of 5 posts
 
-        
-  </script>
+        // Render the selected posts in both small and large formats
+        const relatedPosts = selectedPosts.map((post, index) => {
+          const imageUrl =
+            post.images && post.images[0]
+              ? post.images[0].url
+              : extractImageFromContent(post.content);
+
+          // Create small and large versions of the post card
+          const cardClass = index % 2 === 0 ? 'related-post-card-large' : 'related-post-card-small';
+
+          return `
+            <div class="${cardClass}">
+              <img src="${imageUrl}" alt="${post.title}">
+              <div class="related-card-content">
+                <a href="post.html?postId=${post.id}" target="_self">
+                  <h3>${post.title}</h3>
+                </a>
+              </div>
+            </div>
+          `;
+        });
+
+        relatedPostsContainer.innerHTML = relatedPosts.join('');
+      } else {
+        relatedPostsContainer.innerHTML = '<p>No related posts found.</p>';
+      }
+    } catch (error) {
+      console.error('Error fetching related posts:', error);
+      relatedPostsContainer.innerHTML = '<p>Error loading related posts.</p>';
+    }
+  }
+
+  // Extract the first image from content
+  function extractImageFromContent(content) {
+    const imgTagMatch = content.match(/<img[^>]+src="([^">]+)"/);
+    return imgTagMatch ? imgTagMatch[1] : 'https://via.placeholder.com/300x200';
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', fetchPost);
+</script>
+
   <script src="script.js">script.js</script>
 </body>
 </html>
