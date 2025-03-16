@@ -1,44 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Viewer</title>
-  <style>
-    /* Remove default margins and paddings */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9; /* Light background color */
-      color: #333; /* Text color */
-    }
-
-    /* Header styling */
-    header {
-      background-color: #4CAF50; /* Green header */
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      font-size: 24px;
-      font-weight: bold;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Fullscreen iframe for PDF */
-    iframe {
-      display: block;
-      border: none;
-      width: 100%;
-      height: calc(100vh - 60px); /* 100% height minus the header height */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinvani</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    PDF Viewer
-  </header>
-  <!-- Replace "Neet%202023.pdf" with your PDF file name (spaces must be encoded or removed) -->
-  <iframe src="https://neetstudyhub.github.io/pixellab/Nee023.pdf"></iframe>
+
+    <!-- Overlay for Closing Menu -->
+    <div id="overlay" onclick="closeMenu()"></div>
+
+    <!-- Header with Navbar -->
+    <header>
+        <span class="menu-btn" onclick="openMenu()"><i class="fas fa-bars"></i></span> 
+        <h1 class="logo" onclick="goHome()">Jinvani</h1>
+        <nav class="desktop-nav">
+            <a href="#">भक्तामर</a>
+            <a href="#">आरती</a>
+            <div class="dropdown">
+                <button class="dropbtn">पूजाये ▼</button>
+                <div class="dropdown-content">
+                    <a href="#">Nitya Pooja</a>
+                    <a href="#">Parv Pooja</a>
+                    <a href="#">Teerthanker Pooja</a>
+                </div>
+            </div>
+            <a href="#">स्तोत्र पाठ</a>
+            <a href="#">जैन भजन</a>
+            <a href="#">Jain Dharma</a>
+            <a href="#">Jain Mandir</a>
+        </nav>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div id="side-menu">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">×</a>
+        <a href="#"><i class="fas fa-book"></i> भक्तामर</a>
+        <a href="#"><i class="fas fa-praying-hands"></i> आरती</a>
+        <a href="#"><i class="fas fa-hand-holding-heart"></i> पूजाये</a>
+        <a href="#"><i class="fas fa-om"></i> स्तोत्र पाठ</a>
+        <a href="#"><i class="fas fa-music"></i> जैन भजन</a>
+        <a href="#"><i class="fas fa-university"></i> Jain Dharma</a>
+        <a href="#"><i class="fas fa-place-of-worship"></i> Jain Mandir</a>
+    </div>
+
+    <!-- Main Content -->
+<main>
+  <div class="posts-container" id="posts-container"></div>
+  <div class="pagination">
+    <button id="prev-page" class="pagination-btn">« पिछला</button>
+    <button id="next-page" class="pagination-btn">अगला »</button>
+</div>
+
+</main>
+<footer>
+    <p>© 2025 जैन धर्म | सर्वाधिकार सुरक्षित</p>
+</footer>
+
+<script src="post.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
