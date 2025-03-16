@@ -494,7 +494,7 @@
     // Extract the first image from content
     function extractImageFromContent(content) {
       const imgTagMatch = content.match(/<img[^>]+src="([^">]+)"/);
-      return imgTagMatch ? imgTagMatch[1] : 'https://via.placeholder.com/500x300';
+      return imgTagMatch ? imgTagMatch[1] : 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjk1IoiV3y6p7zimeLQDi5bTQLK4nok_g8U12yakFC1m6x1F9i53_KrMIgp5XVKKZO4v_5wsA8kCCML1YvEwjKQdu3bgvD1yC1_bWaJuViJrV2Tzkpxx5knhHE45QkyQCvowDXNLz8ADoJYSMYkQz62jA5At3374sDwwn1ZVUPoXOVtJ-vpjzo43Nn3Mfqr/s320/1000037111.jpg';
     }
     
     // Fetch posts using the Cloudflare Proxy and filter by "latest" label
