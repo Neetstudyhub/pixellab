@@ -792,20 +792,34 @@ a{
 
 /* labels */
 
-.spacw {
-margin-top: 80px;
+   @media (min-width:650px) {
+  
 
-}
 .label-container {
-  margin-top: 20px;
-  width: 80%;
-  margin: 0 auto;
-  background-color: #fff;
+  width: 88%;
+  margin-left: 30px;
+  margin-right:30px;
+  margin-top: 40px;
+  background-color: black#FFFFFF;
   border-radius: 10px;
   padding: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
-
+}
+@media (max-width:649px) {
+  
+.label-container {
+  width: 79.6%;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 40px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+  
+}
 .h2 {
   text-align: center;
   color: #333;
@@ -845,7 +859,7 @@ margin-top: 80px;
   justify-content: center; /* Centers content (icon + text) */
   gap: 8px; /* Space between icon and text */
   text-decoration: none; /* Remove underline from links */
-  flex: 0 0 calc(33.333% - 15px); /* Ensure 3 buttons per row with gap consideration */
+  flex: 0 0 calc(26.333% - 15px); /* Ensure 3 buttons per row with gap consideration */
 }
 
 /* Adjust the size of the folder icon */
@@ -874,17 +888,6 @@ margin-top: 80px;
 }
 
 /* Responsive design for smaller screens */
-@media (max-width: 1024px) {
-  .label-btn {
-    padding: 8px 18px; /* Reduced padding for mobile */
-    font-size: 13px; /* Slightly smaller font size for mobile */
-    flex: 0 0 calc(33.333% - 15px); /* 3 buttons per row on tablets */
-  }
-  .label-btn i {
-    font-size: 14px; /* Smaller icon size for mobile */
-  }
-}
-
 @media (max-width: 768px) {
   .label-btn {
     padding: 8px 18px; /* Reduced padding for mobile */
