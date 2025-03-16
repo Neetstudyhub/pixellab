@@ -792,6 +792,10 @@ a{
 
 /* labels */
 
+.spacw {
+margin-top: 80px;
+
+}
 .label-container {
   margin-top: 20px;
   width: 80%;
