@@ -795,10 +795,8 @@ body{
 
   <!-- JavaScript -->
   
-  <script>
-
-    
-  const cloudflareProxy = "https://broken-hall-68ac.earnmoney100a.workers.dev/";
+<script>
+const cloudflareProxy = "https://broken-hall-68ac.earnmoney100a.workers.dev/";
 
 // Get the post title from the URL
 function getPostTitleFromURL() {
@@ -854,20 +852,11 @@ async function fetchRelatedPosts(currentPostId) {
         <div class="related-post-card">
           <img src="${extractImageFromContent(post.content)}" alt="${post.title}">
           <div class="related-card-content">
-            <a href="/post/${post.title.replace(/\s+/g, "-").toLowerCase()}" class="related-post-link">${post.title}</a>
+            <a href="/pixellab/post/${post.title.replace(/\s+/g, "-").toLowerCase()}" class="related-post-link">${post.title}</a>
           </div>
         </div>
       `).join("")
       : "<p>No related posts found.</p>";
-
-    document.querySelectorAll(".related-post-link").forEach(link => {
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        history.pushState(null, "", this.getAttribute("href"));
-        fetchPost();
-      });
-    });
-
   } catch (error) {
     console.error("Error fetching related posts:", error);
   }
@@ -876,8 +865,8 @@ async function fetchRelatedPosts(currentPostId) {
 // Initialize
 window.addEventListener("popstate", fetchPost);
 document.addEventListener("DOMContentLoaded", fetchPost);
+</script>
 
-  </script>
   <script src="script.js">script.js</script>
 </body>
 </html>
