@@ -806,7 +806,7 @@ a{
 }
 }
 
-@media (min-width: 696px) (max-width: 780px) {
+@media (min-width: 696px) and (max-width: 780px) {
 .label-container {
   width: 80%;
   margin-left: 3px;
@@ -818,7 +818,7 @@ a{
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
   }
-   @media (min-width: 451px) (max-width: 695px) {
+   @media (min-width: 451px) and (max-width: 695px) {
   
 
 .label-container {
