@@ -1,0 +1,37 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches: [ main ]  # Change to your default branch if different.
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: |
+          # If you use Node.js version older than 18, you might need node-fetch.
+          # npm install node-fetch
+          echo "No dependencies to install."
+
+      - name: Generate Sitemap
+        run: node generateSitemap.js
+
+      - name: Commit and Push sitemap.xml
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add sitemap.xml
+          git diff-index --quiet HEAD || git commit -m "Update sitemap.xml"
+          git push
