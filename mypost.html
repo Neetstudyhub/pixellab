@@ -3,37 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
+    <title>Post</title>
 </head>
 <body>
     <h1 id="post-title"></h1>
     <div id="post-content"></div>
 
     <script>
-        async function fetchPost() {
-            let path = window.location.pathname;
-            let slug = path.split('/').pop().replace('.html', '');
-
+        async function getPostIdByTitle(title) {
+            const apiUrl = "https://broken-hall-68ac.earnmoney100a.workers.dev/";
             try {
-                const response = await fetch('https://broken-hall-68ac.earnmoney100a.workers.dev/');
-                const data = await response.json();
-                const post = data.items.find(p => 
-                    p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') === slug
+                let response = await fetch(apiUrl);
+                let data = await response.json();
+                let posts = data.items;
+
+                let post = posts.find(p => 
+                    p.title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase() === title
                 );
 
-                if (post) {
-                    document.title = post.title;
-                    document.getElementById('post-title').innerText = post.title;
-                    document.getElementById('post-content').innerHTML = post.content;
-                } else {
-                    document.body.innerHTML = '<h1>Post Not Found</h1>';
-                }
+                return post ? post.id : null;
             } catch (error) {
-                console.error('Error fetching post:', error);
+                console.error("Error fetching post ID:", error);
+                return null;
             }
         }
 
-        fetchPost();
+        async function fetchPost(postId) {
+            const postUrl = `https://neetstudyhub.github.io/pixellab/post?postId=${postId}`;
+            try {
+                let response = await fetch(postUrl);
+                let data = await response.json();
+
+                document.getElementById("post-title").innerText = data.title;
+                document.getElementById("post-content").innerHTML = data.content;
+            } catch (error) {
+                console.error("Error fetching post:", error);
+            }
+        }
+
+        async function loadPost() {
+            let path = window.location.pathname;
+            let title = path.split("/").pop();
+
+            let postId = await getPostIdByTitle(title);
+            if (postId) {
+                fetchPost(postId);
+            } else {
+                document.getElementById("post-title").innerText = "Post Not Found";
+            }
+        }
+
+        loadPost();
     </script>
 </body>
 </html>
