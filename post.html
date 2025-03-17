@@ -796,105 +796,87 @@ body{
   <!-- JavaScript -->
   
   <script>
-  const cloudflareProxy = 'https://broken-hall-68ac.earnmoney100a.workers.dev/'; // Cloudflare Worker URL
 
-// Get the postId from the URL
-const urlParams = new URLSearchParams(window.location.search);
-const postId = urlParams.get('postId');
+    
+  const cloudflareProxy = "https://broken-hall-68ac.earnmoney100a.workers.dev/";
 
-const breadcrumbs = document.getElementById('breadcrumbs');
-const postTitle = document.getElementById('post-title');
-const postMeta = document.getElementById('post-meta');
-const postContent = document.getElementById('post-content');
-const relatedPostsContainer = document.getElementById('related-posts');
+// Get the post title from the URL
+function getPostTitleFromURL() {
+  const pathSegments = window.location.pathname.split("/");
+  return decodeURIComponent(pathSegments.pop());
+}
 
 // Fetch and display the post content
 async function fetchPost() {
+  const postTitle = getPostTitleFromURL();
+
   try {
-    // Fetch post data via Cloudflare Worker
-    const response = await fetch(`${cloudflareProxy}?id=${postId}`);
+    const response = await fetch(`${cloudflareProxy}?maxResults=100`);
     const data = await response.json();
 
-    // Populate the post content
-    postTitle.textContent = data.title;
-    postMeta.innerHTML = `By - Jinvani | Time: ${new Date(
-      data.published
-    ).toLocaleDateString()}`;
-    postContent.innerHTML = data.content;
+    const post = data.items.find(
+      (p) => p.title.replace(/\s+/g, "-").toLowerCase() === postTitle
+    );
 
-    // Set breadcrumbs
-breadcrumbs.innerHTML = `<a href="index.html">Home</a> › <a href="blog.html">All Posts</a>`;
+    if (!post) {
+      throw new Error("Post not found.");
+    }
 
-    
-    // Fetch and display related posts
-    fetchRelatedPosts();
+    document.getElementById("post-title").textContent = post.title;
+    document.getElementById("post-meta").innerHTML = `By - Jinvani | Published: ${new Date(post.published).toLocaleDateString()}`;
+    document.getElementById("post-content").innerHTML = post.content;
+
+    fetchRelatedPosts(post.id);
   } catch (error) {
-    console.error('Error fetching the post:', error);
-    postContent.innerHTML = `<p>Error loading post. Please try again.</p>`;
+    console.error("Error fetching post:", error);
+    document.getElementById("post-content").innerHTML = "<p>Post not found.</p>";
   }
 }
 
-// Fetch all posts and display 5 related posts excluding "ncert" and "pyq"
-async function fetchRelatedPosts() {
+// Fetch related posts
+async function fetchRelatedPosts(currentPostId) {
   try {
-    // Fetch related posts data via Cloudflare Worker
     const response = await fetch(`${cloudflareProxy}?maxResults=500`);
     const data = await response.json();
 
-    if (data.items && data.items.length > 1) {
-      // Shuffle the posts randomly
-      const shuffledPosts = data.items.sort(() => 0.5 - Math.random());
+    const excludedLabels = ['ncert', 'pyq', 'Blog', 'Physics11', 'Neet', 'Latest update', 'latest'];
+    const relatedPosts = data.items
+      .filter(
+        (post) =>
+          post.id !== currentPostId &&
+          (!post.labels || !post.labels.some((label) => excludedLabels.includes(label.toLowerCase())))
+      )
+      .slice(0, 5);
 
-      // Select 5 posts (excluding the current post and posts with labels "ncert" or "pyq")
-      const excludedLabels = ['ncert', 'pyq', 'Blog','Physics11','Neet','Latest update','latest'];
-      const selectedPosts = shuffledPosts
-        .filter(
-          (post) =>
-            post.id !== postId && // Exclude the current post
-            (!post.labels || !post.labels.some((label) => excludedLabels.includes(label.toLowerCase()))) // Exclude posts with specific labels
-        )
-        .slice(0, 5);
-
-      // Render the selected posts
-      const relatedPosts = selectedPosts.map((post) => {
-        const imageUrl =
-          post.images && post.images[0]
-            ? post.images[0].url
-            : extractImageFromContent(post.content);
-
-        return `
-          <div class="related-post-card">
-            <img src="${imageUrl}" alt="${post.title}">
-            <div class="related-card-content">
-              <a href="post.html?postId=${post.id}" target="_self">
-                <h3>${post.title}</h3>
-              </a>
-            </div>
+    const relatedPostsContainer = document.getElementById("related-posts");
+    relatedPostsContainer.innerHTML = relatedPosts.length
+      ? relatedPosts.map((post) => `
+        <div class="related-post-card">
+          <img src="${extractImageFromContent(post.content)}" alt="${post.title}">
+          <div class="related-card-content">
+            <a href="/post/${post.title.replace(/\s+/g, "-").toLowerCase()}" class="related-post-link">${post.title}</a>
           </div>
-        `;
-      });
+        </div>
+      `).join("")
+      : "<p>No related posts found.</p>";
 
-      relatedPostsContainer.innerHTML = relatedPosts.join('');
-    } else {
-      relatedPostsContainer.innerHTML = '<p>No related posts found.</p>';
-    }
+    document.querySelectorAll(".related-post-link").forEach(link => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        history.pushState(null, "", this.getAttribute("href"));
+        fetchPost();
+      });
+    });
+
   } catch (error) {
-    console.error('Error fetching related posts:', error);
-    relatedPostsContainer.innerHTML = '<p>Error loading related posts.</p>';
+    console.error("Error fetching related posts:", error);
   }
 }
 
-// Extract the first image from content
-function extractImageFromContent(content) {
-  const imgTagMatch = content.match(/<img[^>]+src="([^">]+)"/);
-  return imgTagMatch ? imgTagMatch[1] : 'https://via.placeholder.com/300x200';
-}
-
 // Initialize
-document.addEventListener('DOMContentLoaded', fetchPost);
+window.addEventListener("popstate", fetchPost);
+document.addEventListener("DOMContentLoaded", fetchPost);
 
-
-        
   </script>
   <script src="script.js">script.js</script>
 </body>
