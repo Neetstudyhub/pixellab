@@ -3,27 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Sitemap of Blog Posts</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { color: #333; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 8px; }
+    a { text-decoration: none; color: #1a0dab; }
+    a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
   <h1>Sitemap of Blog Posts</h1>
-  <ul id="posts"></ul>
-
+  <ul id="posts">Loading posts...</ul>
+  
   <script>
-    // API URL that returns your blog posts
+    // API URL that returns your blog posts.
     const apiUrl = 'https://broken-hall-68ac.earnmoney100a.workers.dev';
-    // Base URL for your post links
+    // Base URL for your post links.
     const baseUrl = 'https://neetstudyhub.github.io/pixellab/post?postId=';
 
-    // Fetch the posts from your API
-    fetch(apiUrl)
-      .then(response => response.json())
+    // If you run into CORS issues, you can use a free CORS proxy like All Origins.
+    // Uncomment the next two lines if needed:
+    // const proxyUrl = 'https://api.allorigins.hexocode.repl.co/get?disableCache=true&url=';
+    // const fetchUrl = proxyUrl + encodeURIComponent(apiUrl);
+    
+    const fetchUrl = apiUrl;  // Use this if no CORS issue occurs.
+
+    fetch(fetchUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
       .then(posts => {
         const postsList = document.getElementById('posts');
+        postsList.textContent = ''; // Clear "Loading posts..." text
         posts.forEach(post => {
-          // Get the post ID (adjust property if your API uses a different key)
+          // Adjust the property name if your API uses something other than "id" or "postId"
           const postId = post.id || post.postId;
           if (!postId) return;
-          // Create a list item and link for each post
           const li = document.createElement('li');
           const link = document.createElement('a');
           link.href = baseUrl + postId;
