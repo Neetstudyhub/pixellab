@@ -2,9 +2,9 @@ name: Generate Sitemap
 
 on:
   push:
-    branches: [ main ]  # Change to your default branch if different.
+    branches: [ main ]  # Replace "main" with your default branch if different.
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC.
+    - cron: '0 0 * * *'  # This runs daily at midnight UTC.
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          # If you use Node.js version older than 18, you might need node-fetch.
+          # If you use Node.js version older than 18, uncomment the following line:
           # npm install node-fetch
           echo "No dependencies to install."
 
