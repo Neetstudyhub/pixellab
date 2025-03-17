@@ -27,7 +27,8 @@
                 postLink.innerText = postTitle;
                 postLink.addEventListener("click", (event) => {
                     event.preventDefault();
-                    window.location.href = `mypost/${postSlug}`;
+                    window.history.pushState({}, '', `mypost/${postSlug}`);
+                    window.location.href = `post?postId=${postId}`;
                 });
 
                 const postElement = document.createElement("div");
