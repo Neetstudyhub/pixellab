@@ -538,11 +538,11 @@ function displayPosts() {
   const postsToDisplay = latestPosts.slice(displayedPosts, displayedPosts + postsPerBatch);
   const postCards = postsToDisplay.map((post) => `
     <div class="card">
-      <a href="/post/${post.slug}" class="post-link" data-id="${post.id}">
+      <a href="/pixellab/post/${post.slug}" class="post-link" data-id="${post.id}">
         <div class="card-image"><img src="${post.imageUrl}" alt="${post.title}" /></div>
       </a>
       <div class="card-content">
-        <h3><a href="/post/${post.slug}" class="post-link" data-id="${post.id}">${post.title}</a></h3>
+        <h3><a href="/pixellab/post/${post.slug}" class="post-link" data-id="${post.id}">${post.title}</a></h3>
         <p>${post.contentSnippet}...</p>
         <span class="published-date">Published: ${post.published}</span>
       </div>
@@ -565,7 +565,7 @@ function displayPosts() {
       event.preventDefault();
       const postId = this.getAttribute("data-id");
       const postTitle = this.getAttribute("href").split("/").pop();
-      history.pushState(null, "", `/post/${postTitle}`);
+      history.pushState(null, "", `/pixellab/post/${postTitle}`);
       loadPost(postId);
     });
   });
@@ -579,8 +579,6 @@ function loadMorePosts() {
 // Event Listeners
 loadMoreBtn.addEventListener("click", loadMorePosts);
 document.addEventListener("DOMContentLoaded", fetchBloggerPosts);
+</script>
 
-    
-    
-  </script>
 </html>
