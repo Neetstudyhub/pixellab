@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <!-- Meta Tags -->
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <title><data:blog.pageTitle/></title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' rel='stylesheet'/>
+  <!-- CSS Styles -->
+  <b:skin><![CDATA[
+    /* Reset Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none; /* Remove underline globally */
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background-color: #f5f5f5;
+      color: #000000;
+      padding: 0;
+      margin: 0;
+    }
+    /* Font Size Adjustment for Different Screen Sizes */
+    body {
+      font-size: 14px; /* Default font size */
+    }
+    @media (max-width: 480px) {
+      body {
+        font-size: 12px; /* Smaller font size for mobile */
+      }
+    }
+    @media (min-width: 481px) and (max-width: 767px) {
+      body {
+        font-size: 14px; /* Medium font size for tablets */
+      }
+    }
+    @media (min-width: 768px) {
+      body {
+        font-size: 16px; /* Larger font size for desktops */
+      }
+    }
+
+
+
+    /* Main Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 10px;
+      margin-top: -10px; /* Create space for fixed header */
+margin-bottom: -40px;
+    }
+    /* Cards Section */
+    .cards-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      box-sizing: border-box;
+    }
+    @media (max-width: 480px) {
+      .cards-section { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 481px) and (max-width: 1024px) {
+      .cards-section { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1025px) {
+      .cards-section { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 1201px) {
+      .cards-section { gap: 30px; }
+    }
+    /* Card Styles */
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    /* Image Container */
+    .card-image {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 ratio */
+      overflow: hidden;
+      background: #ccc;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+    .card-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Card Content */
+    .card-content {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    /* Top Labels */
+    .top-labels {
+      margin-bottom: 8px;
+    }
+    .top-labels .label {
+      display: inline-block;
+      background: #1b76dc;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-size: 0.8em;
+      margin-right: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .top-labels .label:hover {
+      background-color: #1152a3;
+    }
+    /* Card Title */
+    .card-content h3 {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.3em;
+      margin: 10px 0;
+    }
+    /* Description Styling */
+    .post-description {
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      flex: 1;
+    }
+    /* Bottom Meta */
+    .bottom-meta {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .date-logo img {
+      width: 20px;
+      height: auto;
+      margin-right: 5px;
+      border-radius: 50%;
+    }
+    .published-date {
+      font-size: 0.9em;
+      color: #777;
+    }
+    /* Load More Button */
+    .load-more {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #0000ff;
+      color: white;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .load-more:hover {
+      background-color: #0000cc;
+    }
+    .loading-spinner {
+      display: none;
+      margin: 20px auto;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #0000ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* That's All Message */
+    .thats-all {
+      display: none;
+      text-align: center;
+      margin: 20px auto;
+      font-size: 1em;
+      color: #777;
+    }
+    /* Footer */
+    footer {
+      background-color: #0000ff; /* Blue Premium Theme */
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
+    footer p {
+      margin: 0;
+      font-size: 0.9em;
+    }
+    /* Post Styling */
+@media (max-width: 766px) {
+    .single-post-header {
+      margin-bottom: 20px;
+    }
+   .breadcrumbs {
+  font-size: 13px;
+  color: blue;
+  margin-top: -20px;
+  margin-left: 0px;
+}
+.breadcrumbs a {
+  color: blue;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #777;
+
+}
+
+
+
+    .single-post-header h1 {
+      font-family: 'Roboto Slab', serif;
+      font-size: 23px;
+      margin-top: 6px;
+      color: #000000;
+      margin-left: 0px;
+      margin-bottom: 9px;
+    }
+    .meta {
+      font-size: 12px;
+      color: dark grey;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      margin-left: 0px;
+    }
+    .meta img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      border-radius: 50%;
+    }
+    .meta span {
+      margin-left: 5px;
+    }
+    /* Post Content Card */
+    .post-content-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      margin-bottom: 4px;
+      overflow: hidden;
+      margin-left: -4px;
+      margin-right: -4px;
+      margin-top: -5px;
+    }
+    .post-content-card p {
+      font-size: 10px;
+      line-height: 1.6;
+    }
+    .post-content-card img {
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      margin: 8px;
+    }
+    .post-content-card h2,
+    .post-content-card h3 {
+      font-family: 'Roboto Slab', serif;
+    }
+    .post-content-card h2 {
+      font-size: 1.5em;
+    }
+    .post-content-card h3 {
+      font-size: 1.2em;
+    }
+    .post-content-card ul,
+    .post-content-card ol {
+    }
+    .post-content-card blockquote {
+      background: #f9f9f9;
+      border-left: 5px solid #0000ff;
+      padding: 10px 20px;
+      margin: 15px 0;
+      font-style: italic;
+      color: #555;
+    }
+header .logo a{
+
+font-size: 23px;
+
+font-weight: bold;
+
+color:white;
+
+}
+}
+   /* Header with Navbar */
+header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 20px;
+background-color: #0066CC;
+color: white;
+position: sticky;
+top: 0;
+z-index: 10;
+}
+
+header .logo {
+font-size: 1.5em;
+font-weight: bold;
+}
+
+header .nav-links {
+display: flex;
+gap: 29px;
+}
+
+header .nav-links a {
+color: white;
+text-decoration: none;
+font-size: 1.2em;
+font-weight: 400;
+}
+
+header .nav-links a:hover {
+text-decoration: underline;
+}
+
+header .hamburger {
+
+font-size: 0px;
+cursor: pointer;
+display: none;
+}
+    /* Sidebar Container */
+.sidebar {
+  position: fixed;
+  top: 0px;
+  left: -320px; /* Initially hidden */
+  width: 220px;
+  height: 100%;
+  background: #ffffff; /* White background */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease; /* Smooth slide-in effect */
+  z-index: 1000;
+}
+
+/* Sidebar Open State */
+.sidebar.open {
+  left: 0;
+}
+/*sidebar flex */
+.flexy{
+  display: flex;
+  
+}
+.homesearch-bar{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  font-size: 18px;
+  font-weight: bolder;
+  color: #0066cc;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+  margin-bottom: -20px;
+  
+  padding-left: 16px;
+  
+  
+}
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding-top: 40px;
+  margin-left: 5px;
+  
+}
+
+.sidebar-menu li {
+  margin: 5px 0;
+}
+
+.sidebar-menu li a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 540;
+  color: #333333; /* Dark text color */
+  padding: 10px 15px;
+  display: flex; /* Flex for icon + text */
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+}
+
+.sidebar-menu li a i {
+  margin-right: 10px; /* Spacing for icons */
+  font-size: 20px; /* Icon size */
+  color: #0066cc; /* Icon color */
+}
+
+.sidebar-menu li a:hover {
+  background-color: #f0f0f0; /* Light gray hover effect */
+  color: #0066cc;
+}
+/* Sidebar Close Button */
+.sidebar-close {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+color: #333333;
+background: none;
+border: none;
+cursor: pointer;
+transition: color 0.3s ease;
+margin-bottom: -20px;
+}
+
+.sidebar-close:hover {
+color: #0066cc;
+}
+
+/* Sidebar Tab for Toggle */
+.sidebar-tab {
+position: fixed;
+top: 2px;
+right: 0; /* Position it on the right side */
+width: 50px;
+height: 50px;
+background: #0066cc; /* Blue tab background */
+color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+border-top-left-radius: 25px;
+border-bottom-left-radius: 25px; /* Adjust radius for right-side placement */
+font-size:19px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+z-index: 1100;
+}
+
+.sidebar-tab:hover {
+background-color: none; /* Darker hover effect */
+}
+/* sidebar footer */
+
+.sidebar-footer {
+position: absolute;
+margin-top: auto;
+border-top: 1px solid #ddd;
+padding: 10px;
+padding-top: -7px;
+bottom: 10px;
+}
+.social-media {
+text-align: left;
+padding: 8px 0;
+margin-bottom: -11px;
+}
+.social-media a {
+display: inline-block;
+color: var(--primary);
+text-align: left;
+margin: 0 10px;
+font-size: 16px;
+transition: all 0.3s ease;
+text-decoration: none;
+}
+.social-media a:hover {
+
+color: #0066cc;
+}
+.social-media a.x-icon {
+font-weight: bold;
+}
+.pages-links {
+text-align: left;
+padding: 5px;
+background-color: none;
+margin-left:6px;
+}
+.pages-links a {
+text-decoration: none;
+font-size: 14px;
+font-weight: 600;
+color: var(--primary);
+margin: 3px;
+
+transition: color 0.3s ease;
+}
+.pages-links a:hover {
+color: #0066cc;
+}
+.pages-row {
+margin: 3px 0;
+}
+@media (min-width: 767px) {
+.sidebar-tab {
+display: none; /* Hide sidebar toggle tab on desktop */
+}
+}
+@media (max-width: 768px) {
+header .hamburger {
+display: block;
+}
+
+header .nav-links {
+display: none;
+}
+
+aside {
+width: 200px;
+}
+
+aside.open {
+left: 0;
+}
+}
+
+@media (min-width: 767px) {
+  .single-post-header {
+      margin-bottom: 20px;
+    }
+   .breadcrumbs {
+  font-size: 0.5em;
+  color: blue;
+  margin-top: -10px;
+  margin-left: 6px;
+}
+.breadcrumbs a {
+ 
+  color: blue;
+  text-decoration: none;
+  transition: color 0.3s ease;
+margin-left: 6px;
+}
+.breadcrumbs a:hover {
+  color: #0000cc;
+}
+    .single-post-header h1 {
+      font-family: 'Roboto Slab', serif;
+      font-size: 29px;
+      margin-top: 6px;
+      color: #000000;
+      margin-left: 7px;
+      margin-bottom: 9px;
+    }
+    .meta {
+      font-size: 23px;
+      color: dark grey;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      margin-left: 12px;
+    }
+    .meta img {
+      width: 23px;
+      height: 23px;
+      margin-right: 5px;
+      border-radius: 50%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .meta span {
+      margin-left: 5px;
+    }
+    /* Post Content Card */
+    .post-content-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 32px;
+      margin-bottom: 4px;
+      overflow: hidden;
+      margin-left: 12px;
+      margin-right: 12px;
+      margin-top: 5px;
+      padding-top: 50px;
+    }
+    .post-content-card p {
+      font-size: 10px;
+      line-height: 1.6;
+    }
+    .post-content-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 14px;
+    }
+    .post-content-card h2,
+    .post-content-card h3 {
+      font-family: 'Roboto Slab', serif;
+    }
+    .post-content-card h2 {
+      font-size: 1.5em;
+    }
+    .post-content-card h3 {
+      font-size: 1.2em;
+    }
+    .post-content-card ul,
+    .post-content-card ol {
+    }
+    .post-content-card blockquote {
+      background: #f9f9f9;
+      border-left: 5px solid #0000ff;
+      padding: 10px 20px;
+      margin: 15px 0;
+      font-style: italic;
+      color: #555;
+    }
+header{
+ height: 80px;
+}
+header .logo a{
+
+font-size: 32px;
+
+font-weight: bold;
+color:white;
+}
+}
+
+  ]]></b:skin>
+</head>
+<body>
+<!-- Header with Navbar -->
+  <header>
+    <div class='logo'><a href='/'>Jinvani</a></div>
+    <div class='hamburger' id='hamburger'>&#9776;</div>
+    <nav class='nav-links'>
+<a href='#'>Bhaktamar</a>
+<a href='posttest.html'>Aarti</a>
+<a href='#'>Pooja</a>
+<a href='#'>Jain Bhajan</a>
+<a href='#'>Stotra Path</a>
+<a href='#'>Jain Dharma</a>
+<a href='#'>Jain Mandir</a>
+
+    </nav>
+  </header>
+
+<!-- Sidebar -->
+<div class='sidebar' id='sidebar'>
+ <div class='sideflexy'>
+   
+
+ <div class='homesearch-bar'>
+  Jinvani
+</div>
+  <button class='sidebar-close' id='closeSidebar'>&amp;times;</button>
+  </div>
+  <ul class='sidebar-menu'>
+    
+    <li><a href='#home'><i class='fas fa-home'/> Home</a></li>
+
+  <li><a href='#'><i class='fas fa-book'/> Bhaktamar</a></li>
+  <li><a href='posttest.html'><i class='fas fa-praying-hands'/> Aarti</a></li>
+  <li><a href='#'><i class='fas fa-hand-holding-heart'/> Pooja</a></li>
+  <li><a href='#'><i class='fas fa-om'/> Stotra Path</a></li>
+  <li><a href='#'><i class='fas fa-music'/> Jain Bhajan</a></li>
+  <li><a href='#'><i class='fas fa-university'/> Jain Dharma</a></li>
+  <li><a href='#'><i class='fas fa-place-of-worship'/> Jain Mandir</a></li>
+
+
+
+</ul>
+
+ 
+  <div class='sidebar-footer'>
+  <div class='social-media'>
+    <a href='#' title='Facebook'>
+      <i class='fab fa-facebook-f'/></a>
+    <a class='x-icon' href='#' title='X'>X</a>
+    <a href='#' title='Telegram'><i class='fab fa-telegram-plane'/></a>
+  </div>
+  <div class='pages-links pages-row'>
+    <a href='#'>Privacy Policy</a>
+    <a href='#'>About Us</a>
+    <a href='#'>Contact Us</a>
+    <a href='#'>Sitemap</a>
+    
+  </div>
+</div>
+</div>
+<!-- Sidebar Toggle Tab -->
+<div class='sidebar-tab' id='sidebarTab'>
+  <i class='fas fa-bars'/>
+</div>
+
+  <!-- Main Content -->
+  <div class='container'>
+    <div class='main-content'>
+      <b:section id='main' showaddelement='yes'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+          <b:includable id='main'>
+            <!-- Homepage Layout -->
+            <b:if cond='data:view.isHomepage or data:view.isLabelSearch'>
+              <!-- Label Page Heading -->
+              <b:if cond='data:view.isLabelSearch'>
+                <h1 style=' border-left: 4px solid skyblue; height:28px;                   margin-left: -12px;                  font-size:                  21px; '>
+                 <span style='margin-left: 10px;'>Related To </span>
+<data:blog.searchLabel/> : </h1>
+                <br/>
+              </b:if>
+              <div class='cards-section' id='cards-section'>
+                <b:loop values='data:posts' var='post'>
+                  <div class='card'>
+                    <!-- Thumbnail -->
+                    <div class='card-image'>
+                      <a expr:href='data:post.url'>
+                        <b:if cond='data:post.firstImageUrl'>
+                          <img expr:src='data:post.firstImageUrl' alt='Post Thumbnail'/>
+                        <b:else/>
+                          <img src='https://via.placeholder.com/300x150' alt='Placeholder Thumbnail'/>
+                        </b:if>
+                      </a>
+                    </div>
+                    <div class='card-content'>
+                      <!-- Top Labels -->
+                      <p class='top-labels'>
+                        <b:if cond='data:post.labels'>
+                          <b:loop values='data:post.labels' var='label'>
+                            <a class='label' expr:href='data:label.url'><data:label.name/></a>
+                          </b:loop>
+                        </b:if>
+                      </p>
+                      <!-- Title -->
+                      <a expr:href='data:post.url'>
+                        <h3><data:post.title/></h3>
+                      </a>
+                      <!-- Description -->
+                      <p class='post-description'><data:post.snippet/></p>
+                      <!-- Bottom Meta -->
+                      <div class='bottom-meta'>
+                        <div class='date-logo'>
+                          <img src='https://via.placeholder.com/20' alt='Logo'/> <!-- Replace with your logo URL -->
+                        </div>
+                        <span class='published-date'>
+                          <b:if cond='data:post.author'>By <data:post.author/></b:if>
+                          <b:if cond='data:post.date'> | <data:post.date/></b:if>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </b:loop>
+              </div>
+              <button class='load-more'>Load More</button>
+              <div class='loading-spinner'></div>
+              <p class='thats-all'>That's all!</p>
+            </b:if>
+            <!-- Individual Post Page Layout -->
+            <b:if cond='data:view.isSingleItem'>
+              <b:loop values='data:posts' var='post'>
+                <div class='single-post-header'>
+                  <!-- Breadcrumbs -->
+                <p class='breadcrumbs'>
+  <a href='/'>Home</a> &gt;
+  <span>Jinvani</span> 
+  
+</p>
+                  
+                  <!-- Title -->
+                  <h1><data:post.title/></h1>
+                  <!-- Meta Information -->
+                  <p class='meta'>
+                    <img src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQ5rf0s5Q8jnsHt8_k8DZ601eDL5onEIQFLK5rADqlfRPbY5viJ-6xIoJrLg1TexdPVNMuk1X6jWkznLQT0UJyCwuoqgL52rr9hLELaeUVGF2pis330FCWz2hseHJ6q3CByVKosbgeOP7K2wN-TkH4g9Y9BY00V2vULnYxP5u5utpbu6Ex0NQsN1VmhRdu/s1600/1000037862.jpg' alt='Logo'/> <!-- Replace with your logo URL -->
+                    <span>Jinvani </span> <span> </span>| 
+                    <b:if cond='data:post.date'><data:post.date format='dd-MM-yyyy'/></b:if>
+                  </p>
+                </div>
+                <!-- Post Content -->
+                <div class='post-content-card'>
+                  <p><data:post.body/></p>
+                </div>
+              </b:loop>
+            </b:if>
+            <!-- 404 Error Page -->
+            <b:if cond='data:view.isError'>
+              <div class='error-page'>
+                <h1>404</h1>
+                <p>Oops! The page you're looking for doesn't exist.</p>
+                <a href='/'>Go Back to Home</a>
+              </div>
+            </b:if>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </div>
+  </div>
+  <!-- Footer Section -->
+  <footer>
+    <p>&amp;copy; <data:blog.title/>. All rights reserved.</p>
+  </footer>
+  <!-- JavaScript -->
+  <script>    //<![CDATA[
+        // Sidebar toggle functionality for mobile
+    const sidebar = document.getElementById('sidebar');
+    const closeSidebarBtn = document.getElementById('closeSidebar');
+    const sidebarTab = document.getElementById('sidebarTab');
+    const hamburger = document.querySelector("header .hamburger");
+
+    const toggleSidebar = () => {
+      sidebar.classList.toggle('open');
+      // When sidebar is open on mobile, hide the sidebar tab (hamburger) if necessary
+      if (sidebar.classList.contains('open')) {
+        sidebarTab.style.display = 'none';
+      } else {
+        sidebarTab.style.display = 'flex';
+      }
+    };
+
+    hamburger.addEventListener('click', toggleSidebar);
+    sidebarTab.addEventListener('click', toggleSidebar);
+    closeSidebarBtn.addEventListener('click', toggleSidebar);
+
+    document.addEventListener('click', function(e) {
+      if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !sidebarTab.contains(e.target) && !hamburger.contains(e.target)) {
+        toggleSidebar();
+      }
+    });
+//]]>
+  </script>
+  <script type='text/javascript'>
+    //<![CDATA[
+    document.addEventListener('DOMContentLoaded', function () {
+      const loadMoreButton = document.querySelector('.load-more');
+      const loadingSpinner = document.querySelector('.loading-spinner');
+      const thatsAllMessage = document.querySelector('.thats-all');
+      const cardsSection = document.getElementById('cards-section');
+      const allCards = Array.from(cardsSection.children);
+      let visibleCards = 6;
+      // Initially hide all cards except the first 6
+      allCards.forEach((card, index) => {
+        if (index >= visibleCards) {
+          card.style.display = 'none';
+        }
+      });
+      // Show "That's All" message if fewer than 6 cards are available
+      if (allCards.length <= visibleCards) {
+        loadMoreButton.style.display = 'none';
+        thatsAllMessage.style.display = 'block';
+      }
+      // Load More Button Click Event
+      loadMoreButton.addEventListener('click', () => {
+        loadingSpinner.style.display = 'block';
+        loadMoreButton.style.display = 'none';
+        setTimeout(() => {
+          const newVisibleCards = visibleCards + 6;
+          allCards.forEach((card, index) => {
+            if (index >= visibleCards && index < newVisibleCards) {
+              card.style.display = 'block';
+            }
+          });
+          visibleCards = newVisibleCards;
+          // Check if all cards are visible
+          if (visibleCards >= allCards.length) {
+            loadMoreButton.style.display = 'none';
+            thatsAllMessage.style.display = 'block';
+          } else {
+            loadMoreButton.style.display = 'block';
+          }
+          loadingSpinner.style.display = 'none';
+        }, 1000); // Simulate loading delay
+      });
+    });
+    
+    //]]>
+  </script>
+</body>
+</html>
