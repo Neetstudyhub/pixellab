@@ -202,17 +202,7 @@ margin-bottom: -40px;
       color: #777;
     }
     /* Footer */
-    footer {
-      background-color: #0000ff; /* Blue Premium Theme */
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 20px;
-    }
-    footer p {
-      margin: 0;
-      font-size: 0.9em;
-    }
+    
     /* Post Styling */
 @media (max-width: 766px) {
     .single-post-header {
