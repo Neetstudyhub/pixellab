@@ -5,92 +5,429 @@
   <!-- Meta Tags -->
   <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
   <title><data:blog.pageTitle/></title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap" rel="stylesheet"/>
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' rel='stylesheet'/>
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&amp;display=swap' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&amp;display=swap' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap' rel='stylesheet'/>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' rel='stylesheet'/>
+
+ 
   <!-- CSS Styles -->
   <b:skin><![CDATA[
-    /* Reset Styles */
+
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      text-decoration: none; /* Remove underline globally */
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      background-color: #f5f5f5;
-      color: #000000;
-      padding: 0;
-      margin: 0;
-    }
-    /* Font Size Adjustment for Different Screen Sizes */
-    body {
-      font-size: 14px; /* Default font size */
-    }
-    @media (max-width: 480px) {
-      body {
-        font-size: 12px; /* Smaller font size for mobile */
-      }
-    }
-    @media (min-width: 481px) and (max-width: 767px) {
-      body {
-        font-size: 14px; /* Medium font size for tablets */
-      }
-    }
-    @media (min-width: 768px) {
-      body {
-        font-size: 16px; /* Larger font size for desktops */
-      }
-    }
+font-family: 'Roboto', sans-serif, 'Noto Sans Devanagari', serif, 'Merriweather', serif, 'Roboto Slab', serif, Arial, Helvetica, sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+text-decoration: none; /* Remove underline globally */
+}
+body {
+
+background-color: #f5f5f5;
+color: #000000;
+padding: 0;
+margin: 0;
+text-decoration: none;
+}
+   /* Header with Navbar */
+   header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 20px;
+   background-color: #0066CC;
+   color: white;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+   }
+   
+   header .logo {
+   font-size: 1.9em;
+   font-weight: bold;
+   }
+   
+   header .nav-links {
+   display: flex;
+   gap: 29px;
+   }
+   
+   header .nav-links a {
+   color: white;
+   text-decoration: none;
+   font-size: 1.2em;
+   font-weight: 400;
+   }
+   
+   header .nav-links a:hover {
+   text-decoration: underline;
+   }
+   
+   header .hamburger {
+   
+   font-size: 0px;
+   cursor: pointer;
+   display: none;
+   }
+   /* Sidebar Container */
+   .sidebar {
+   position: fixed;
+   top: 0px;
+   left: -320px; /* Initially hidden */
+   width: 220px;
+   height: 100%;
+   background: #ffffff; /* White background */
+   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+   transition: left 0.3s ease; /* Smooth slide-in effect */
+   z-index: 1000;
+   }
+   
+   /* Sidebar Open State */
+   .sidebar.open {
+   left: 0;
+   }
+   /*sidebar flex */
+   .flexy{
+   display: flex;
+   
+   }
+   .sidebar-logo{
+   position: absolute;
+   top: 10px;
+   left: 0;
+   font-size: 18px;
+   font-weight: bolder;
+   color: #0066cc;
+   background: none;
+   border: none;
+   transition: color 0.3s ease;
+   margin-bottom: -20px;
+   
+   padding-left: 16px;
+   
+   
+   }
+   /* Sidebar Menu */
+   .sidebar-menu {
+   list-style: none;
+   padding-top: 40px;
+   margin-left: 5px;
+   
+   }
+   
+   .sidebar-menu li {
+   margin: 5px 0;
+   }
+   
+   .sidebar-menu li a {
+   text-decoration: none;
+   font-size: 14px;
+   font-weight: 540;
+   color: #333333; /* Dark text color */
+   padding: 10px 15px;
+   display: flex; /* Flex for icon + text */
+   align-items: center;
+   border-radius: 5px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+   
+   }
+   
+   .sidebar-menu li a i {
+   margin-right: 10px; /* Spacing for icons */
+   font-size: 20px; /* Icon size */
+   color: #0066cc; /* Icon color */
+   }
+   
+   .sidebar-menu li a:hover {
+   background-color: #f0f0f0; /* Light gray hover effect */
+   color: #0066cc;
+   }
+   /* Sidebar Close Button */
+   .sidebar-close {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   font-size: 24px;
+   color: #333333;
+   background: none;
+   border: none;
+   cursor: pointer;
+   transition: color 0.3s ease;
+   margin-bottom: -20px;
+   }
+   
+   .sidebar-close:hover {
+   color: #0066cc;
+   }
+   
+   /* Sidebar Tab for Toggle */
+   .sidebar-tab {
+   position: fixed;
+   top: 2px;
+   right: 0; /* Position it on the right side */
+   width: 50px;
+   height: 50px;
+   background: #0066cc; /* Blue tab background */
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-top-left-radius: 25px;
+   border-bottom-left-radius: 25px; /* Adjust radius for right-side placement */
+   font-size:19px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   z-index: 1100;
+   }
+   
+   .sidebar-tab:hover {
+   background-color: none; /* Darker hover effect */
+   }
+   
+
+   /* sidebar footer */
+   
+   .sidebar-footer {
+   position: absolute;
+   margin-top: auto;
+   border-top: 1px solid #ddd;
+   padding: 10px;
+   padding-top: -7px;
+   bottom: 10px;
+   }
+   .social-media {
+   text-align: left;
+   padding: 8px 0;
+   margin-bottom: -11px;
+   }
+   .social-media a {
+   display: inline-block;
+   color: var(--primary);
+   text-align: left;
+   margin: 0 10px;
+   font-size: 16px;
+   transition: all 0.3s ease;
+   text-decoration: none;
+   }
+   .social-media a:hover {
+   
+   color: #0066cc;
+   }
+   .social-media a.x-icon {
+   font-weight: bold;
+   }
+   .pages-links {
+   text-align: left;
+   padding: 5px;
+   background-color: none;
+   margin-left:6px;
+   }
+   .pages-links a {
+   text-decoration: none;
+   font-size: 14px;
+   font-weight: 600;
+   color: var(--primary);
+   margin: 3px;
+   
+   transition: color 0.3s ease;
+   }
+   .pages-links a:hover {
+   color: #0066cc;
+   }
+   .pages-row {
+   margin: 3px 0;
+   }
+   @media (min-width: 767px) {
+   .sidebar-tab {
+   display: none; /* Hide sidebar toggle tab on desktop */
+   }
+   }
+   @media (max-width: 768px) {
+   header .hamburger {
+   display: block;
+   }
+   
+   header .nav-links {
+   display: none;
+   }
+   
+   aside {
+   width: 200px;
+   }
+   
+   aside.open {
+   left: 0;
+   }
+   }
+ .logo a{
+color:white;
 
 
+}
 
-    /* Main Layout */
-    .container {
+/* Sidebar Dropdown (Mobile) */
+.sidebar-dropdown {
+  position: relative;
+text-decoration: none;
+}
+
+.sidebar-arrow {
+  float: right;
+  font-size: 16px; /* Increased arrow size */
+  transition: transform 0.3s ease;
+  margin-left: auto; /* Aligns properly */
+}
+
+.sidebar-dropdown.active .sidebar-arrow {
+  transform: rotate(180deg);
+}
+
+.sidebar-submenu {
+  display: none;
+  padding-left: 20px;
+}
+
+.sidebar-dropdown.active .sidebar-submenu {
+  display: block;
+}
+
+
+.sidebar-dropdown > a {
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+
+ /* Navbar Styling */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.arrow {
+  font-size: 12px;
+  color: white;
+  margin-left: 5px;
+}
+
+/* Dropdown Styling */
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px; /* Fixed width for a. professional look */
+  background: #0066cc; /* Same as header */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Show Dropdown on Click */
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+/* Bullet Points */
+
+.dropdown-menu a::before {
+  content: "";
+  margin-right: 5px;
+  font-size: 1.1em;
+}
+
+/* Home page css */
+
+ .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px 10px;
       margin-top: -10px; /* Create space for fixed header */
 margin-bottom: -40px;
     }
-    /* Cards Section */
+
+/* Cards Section */
+
     .cards-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       box-sizing: border-box;
     }
+
     @media (max-width: 480px) {
       .cards-section { grid-template-columns: 1fr; }
     }
+
     @media (min-width: 481px) and (max-width: 1024px) {
       .cards-section { grid-template-columns: repeat(2, 1fr); }
     }
+
+
     @media (min-width: 1025px) {
       .cards-section { grid-template-columns: repeat(3, 1fr); }
     }
+
     @media (min-width: 1201px) {
       .cards-section { gap: 30px; }
     }
+
+
     /* Card Styles */
+
     .card {
       background: #fff;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
       display: flex;
       flex-direction: column;
       height: 100%;
+     
     }
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
+
+
     /* Image Container */
+
+
     .card-image {
       position: relative;
       width: 100%;
@@ -100,6 +437,7 @@ margin-bottom: -40px;
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
     }
+
     .card-image img {
       position: absolute;
       top: 0;
@@ -108,62 +446,92 @@ margin-bottom: -40px;
       height: 100%;
       object-fit: cover;
     }
+
     /* Card Content */
+
+
     .card-content {
       padding: 15px;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      
     }
+
     /* Top Labels */
+
     .top-labels {
       margin-bottom: 8px;
     }
+
+
     .top-labels .label {
       display: inline-block;
       background: #1b76dc;
       color: #fff;
       padding: 3px 8px;
-      border-radius: 8px;
-      font-size: 0.8em;
+      border-radius: 5px;
+      font-size: 9px;
+      font-weight: 450;
       margin-right: 5px;
       text-decoration: none;
       transition: background-color 0.3s ease;
     }
+
     .top-labels .label:hover {
       background-color: #1152a3;
     }
+
+
     /* Card Title */
+
+
     .card-content h3 {
-      font-family: 'Roboto Slab', serif;
-      font-size: 1.3em;
+      
+      font-size: 20px;;
       margin: 10px 0;
     }
+
+
     /* Description Styling */
+
+
     .post-description {
-      font-size: 0.95em;
+      font-size: 13.6px;;
       line-height: 1.5;
       margin-bottom: 15px;
       flex: 1;
     }
+
+
     /* Bottom Meta */
+
+
     .bottom-meta {
       display: flex;
       align-items: center;
       margin-top: 10px;
     }
+
+
     .date-logo img {
-      width: 20px;
-      height: auto;
+      width: 10px;
+      height: 10px;
       margin-right: 5px;
       border-radius: 50%;
+      display: none;
     }
+
+
     .published-date {
-      font-size: 0.9em;
+      font-size: 12px;
       color: #777;
     }
+
     /* Load More Button */
+
+
     .load-more {
       display: block;
       margin: 20px auto;
@@ -176,9 +544,13 @@ margin-bottom: -40px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
+
     .load-more:hover {
       background-color: #0000cc;
     }
+
+
     .loading-spinner {
       display: none;
       margin: 20px auto;
@@ -189,11 +561,16 @@ margin-bottom: -40px;
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
+
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
     /* That's All Message */
+
+
     .thats-all {
       display: none;
       text-align: center;
@@ -201,40 +578,43 @@ margin-bottom: -40px;
       font-size: 1em;
       color: #777;
     }
-    /* Footer */
-    
-    /* Post Styling */
-@media (max-width: 766px) {
+   
+/* post styling */
+
+ @media (max-width: 764px) {
     .single-post-header {
       margin-bottom: 20px;
     }
-   .breadcrumbs {
+
+ .breadcrumbs {
   font-size: 13px;
-  color: blue;
+  color: ;
   margin-top: -20px;
   margin-left: 0px;
 }
-.breadcrumbs a {
+
+ .breadcrumbs a {
   color: blue;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.breadcrumbs a:hover {
+ .breadcrumbs a:hover {
   color: #777;
 
 }
 
 
 
-    .single-post-header h1 {
-      font-family: 'Roboto Slab', serif;
+   .single-post-header h1 {
+      
       font-size: 23px;
       margin-top: 6px;
       color: #000000;
       margin-left: 0px;
       margin-bottom: 9px;
     }
+
     .meta {
       font-size: 12px;
       color: dark grey;
@@ -243,6 +623,7 @@ margin-bottom: -40px;
       margin-bottom: 10px;
       margin-left: 0px;
     }
+
     .meta img {
       width: 20px;
       height: 20px;
@@ -252,336 +633,90 @@ margin-bottom: -40px;
     .meta span {
       margin-left: 5px;
     }
+
     /* Post Content Card */
+
     .post-content-card {
       background: #ffffff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 16px;
+      padding: 22px;
       margin-bottom: 4px;
       overflow: hidden;
       margin-left: -4px;
       margin-right: -4px;
       margin-top: -5px;
     }
-    .post-content-card p {
-      font-size: 10px;
-      line-height: 1.6;
-    }
+
+    
     .post-content-card img {
       max-width: 400px;
       height: auto;
       border-radius: 8px;
       margin: 8px;
     }
-    .post-content-card h2,
-    .post-content-card h3 {
-      font-family: 'Roboto Slab', serif;
-    }
-    .post-content-card h2 {
-      font-size: 1.5em;
-    }
-    .post-content-card h3 {
-      font-size: 1.2em;
-    }
-    .post-content-card ul,
-    .post-content-card ol {
-    }
-    .post-content-card blockquote {
-      background: #f9f9f9;
-      border-left: 5px solid #0000ff;
-      padding: 10px 20px;
-      margin: 15px 0;
-      font-style: italic;
-      color: #555;
-    }
-header .logo a{
-
-font-size: 23px;
-
-font-weight: bold;
-
-color:white;
-
-}
-}
-   /* Header with Navbar */
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px 20px;
-background-color: #0066CC;
-color: white;
-position: sticky;
-top: 0;
-z-index: 10;
 }
 
-header .logo {
-font-size: 1.5em;
-font-weight: bold;
-}
+/* post desktop */
 
-header .nav-links {
-display: flex;
-gap: 29px;
-}
+@media (min-width: 765px) {
 
-header .nav-links a {
-color: white;
-text-decoration: none;
-font-size: 1.2em;
-font-weight: 400;
-}
-
-header .nav-links a:hover {
-text-decoration: underline;
-}
-
-header .hamburger {
-
-font-size: 0px;
-cursor: pointer;
-display: none;
-}
-    /* Sidebar Container */
-.sidebar {
-  position: fixed;
-  top: 0px;
-  left: -320px; /* Initially hidden */
-  width: 220px;
-  height: 100%;
-  background: #ffffff; /* White background */
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  transition: left 0.3s ease; /* Smooth slide-in effect */
-  z-index: 1000;
-}
-
-/* Sidebar Open State */
-.sidebar.open {
-  left: 0;
-}
-/*sidebar flex */
-.flexy{
-  display: flex;
-  
-}
-.homesearch-bar{
-  position: absolute;
-  top: 10px;
-  left: 0;
-  font-size: 18px;
-  font-weight: bolder;
-  color: #0066cc;
-  background: none;
-  border: none;
-  transition: color 0.3s ease;
-  margin-bottom: -20px;
-  
-  padding-left: 16px;
-  
-  
-}
-/* Sidebar Menu */
-.sidebar-menu {
-  list-style: none;
-  padding-top: 40px;
-  margin-left: 5px;
-  
-}
-
-.sidebar-menu li {
-  margin: 5px 0;
-}
-
-.sidebar-menu li a {
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 540;
-  color: #333333; /* Dark text color */
-  padding: 10px 15px;
-  display: flex; /* Flex for icon + text */
-  align-items: center;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  
-}
-
-.sidebar-menu li a i {
-  margin-right: 10px; /* Spacing for icons */
-  font-size: 20px; /* Icon size */
-  color: #0066cc; /* Icon color */
-}
-
-.sidebar-menu li a:hover {
-  background-color: #f0f0f0; /* Light gray hover effect */
-  color: #0066cc;
-}
-/* Sidebar Close Button */
-.sidebar-close {
-position: absolute;
-top: 10px;
-right: 10px;
-font-size: 24px;
-color: #333333;
-background: none;
-border: none;
-cursor: pointer;
-transition: color 0.3s ease;
-margin-bottom: -20px;
-}
-
-.sidebar-close:hover {
-color: #0066cc;
-}
-
-/* Sidebar Tab for Toggle */
-.sidebar-tab {
-position: fixed;
-top: 2px;
-right: 0; /* Position it on the right side */
-width: 50px;
-height: 50px;
-background: #0066cc; /* Blue tab background */
-color: white;
-display: flex;
-justify-content: center;
-align-items: center;
-border-top-left-radius: 25px;
-border-bottom-left-radius: 25px; /* Adjust radius for right-side placement */
-font-size:19px;
-cursor: pointer;
-transition: background-color 0.3s ease;
-z-index: 1100;
-}
-
-.sidebar-tab:hover {
-background-color: none; /* Darker hover effect */
-}
-/* sidebar footer */
-
-.sidebar-footer {
-position: absolute;
-margin-top: auto;
-border-top: 1px solid #ddd;
-padding: 10px;
-padding-top: -7px;
-bottom: 10px;
-}
-.social-media {
-text-align: left;
-padding: 8px 0;
-margin-bottom: -11px;
-}
-.social-media a {
-display: inline-block;
-color: var(--primary);
-text-align: left;
-margin: 0 10px;
-font-size: 16px;
-transition: all 0.3s ease;
-text-decoration: none;
-}
-.social-media a:hover {
-
-color: #0066cc;
-}
-.social-media a.x-icon {
-font-weight: bold;
-}
-.pages-links {
-text-align: left;
-padding: 5px;
-background-color: none;
-margin-left:6px;
-}
-.pages-links a {
-text-decoration: none;
-font-size: 14px;
-font-weight: 600;
-color: var(--primary);
-margin: 3px;
-
-transition: color 0.3s ease;
-}
-.pages-links a:hover {
-color: #0066cc;
-}
-.pages-row {
-margin: 3px 0;
-}
-@media (min-width: 767px) {
-.sidebar-tab {
-display: none; /* Hide sidebar toggle tab on desktop */
-}
-}
-@media (max-width: 768px) {
-header .hamburger {
-display: block;
-}
-
-header .nav-links {
-display: none;
-}
-
-aside {
-width: 200px;
-}
-
-aside.open {
-left: 0;
-}
-}
-
-@media (min-width: 767px) {
   .single-post-header {
       margin-bottom: 20px;
     }
+
    .breadcrumbs {
-  font-size: 0.5em;
-  color: blue;
+  font-size: 0.54em;
+  color: ;
   margin-top: -10px;
-  margin-left: 6px;
+  margin-left: 11px;
 }
+
 .breadcrumbs a {
  
   color: blue;
   text-decoration: none;
   transition: color 0.3s ease;
-margin-left: 6px;
+margin-left: 15px;
 }
+
 .breadcrumbs a:hover {
   color: #0000cc;
 }
+
     .single-post-header h1 {
-      font-family: 'Roboto Slab', serif;
-      font-size: 29px;
+
+      font-size: 2.4rem;
       margin-top: 6px;
       color: #000000;
-      margin-left: 7px;
+      margin-left: 15px;
       margin-bottom: 9px;
     }
+
     .meta {
-      font-size: 23px;
+      font-size: 1.5em;
       color: dark grey;
       display: flex;
       align-items: center;
       margin-bottom: 10px;
-      margin-left: 12px;
+      margin-left: 25px;
     }
+
     .meta img {
-      width: 23px;
-      height: 23px;
+      width: 30px;
+      height: 30px;
       margin-right: 5px;
       border-radius: 50%;
       margin-top: 10px;
       margin-bottom: 10px;
     }
+
     .meta span {
       margin-left: 5px;
     }
+
     /* Post Content Card */
+
     .post-content-card {
       background: #ffffff;
       border-radius: 12px;
@@ -594,57 +729,36 @@ margin-left: 6px;
       margin-top: 5px;
       padding-top: 50px;
     }
-    .post-content-card p {
-      font-size: 10px;
-      line-height: 1.6;
-    }
+
+    
+
     .post-content-card img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
       margin: 14px;
     }
-    .post-content-card h2,
-    .post-content-card h3 {
-      font-family: 'Roboto Slab', serif;
-    }
-    .post-content-card h2 {
-      font-size: 1.5em;
-    }
-    .post-content-card h3 {
-      font-size: 1.2em;
-    }
-    .post-content-card ul,
-    .post-content-card ol {
-    }
-    .post-content-card blockquote {
-      background: #f9f9f9;
-      border-left: 5px solid #0000ff;
-      padding: 10px 20px;
-      margin: 15px 0;
-      font-style: italic;
-      color: #555;
-    }
-header{
- height: 80px;
-}
-header .logo a{
 
-font-size: 32px;
+    
+}
 
-font-weight: bold;
-color:white;
-}
-}
+
+/* footer styling */
+
+
     /* Footer */
+
     footer {
       background-color: white; /* White background */
       color: black; /* Black text color */
       padding: 20px 10px;
       margin-top: 20px;
+      font-size: 15px;
     }
 
+
     /* Top Section Container */
+
     .footer-container {
       display: flex;
       flex-wrap: wrap;
@@ -656,6 +770,7 @@ color:white;
     }
 
     /* Each Column Section */
+
     .footer-section {
       flex: 1;
       min-width: 250px;
@@ -663,8 +778,9 @@ color:white;
 
     /* Headings */
     .footer-section h3 {
-      font-size: 1.2em;
+      font-size: 1.21em;
       margin-bottom: 10px;
+margin-top:13px;
       color: #0066cc; /* Blue headings */
     }
 
@@ -748,7 +864,7 @@ color:white;
     /* In desktop view, place bottom content side-by-side */
     @media (min-width: 769px) {
       .footer-section{
-        font-size: 14px;
+        font-size: 17px;
       }
       .footer-bottom {
         flex-direction: row;
@@ -788,6 +904,199 @@ color:white;
     .footer-pages a:hover {
       color: blue;
     }
+
+/* General 404 Page Styling */
+.error-page {
+  text-align: center;
+  padding: 80px 40px; /* Increased padding for desktop */
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 20px; /* Rounded corners for premium look */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  margin: 60px auto; /* Increased margin for spacing */
+  max-width: 800px; /* Wider container for desktop */
+  position: relative;
+  overflow: hidden;
+}
+
+.error-page::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, #0066cc, #004499);
+  transform: rotate(45deg);
+  z-index: -1;
+  opacity: 0.15; /* Subtle gradient overlay */
+}
+
+.error-page h1 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 8em; /* Larger font size for desktop */
+  color: #0066cc; /* Deep blue tone */
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.error-page p {
+  font-size: 1.5em; /* Larger paragraph text */
+  color: #555;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.error-page a {
+  display: inline-block;
+  padding: 15px 30px; /* Larger button for desktop */
+  background-color: #0066cc;
+  color: white;
+  font-size: 1.2em; /* Larger font size for button */
+  text-decoration: none;
+  border-radius: 30px; /* Fully rounded button */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: zoomIn 2s ease forwards;
+}
+
+.error-page a:hover {
+  background-color: #004499;
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Animation for Falling Icon */
+.error-page .falling-icon {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: url('https://via.placeholder.com/100') no-repeat center/contain; /* Replace with your icon */
+  animation: fall 3s infinite ease-in-out;
+  transform: translateX(-50%);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fall {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 200%;
+    opacity: 0;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .error-page {
+    padding: 50px 20px; /* Reduced padding for tablets */
+    margin: 40px auto;
+  }
+
+  .error-page h1 {
+    font-size: 6em; /* Smaller font size for tablets */
+  }
+
+  .error-page p {
+    font-size: 1.2em;
+  }
+
+  .error-page a {
+    font-size: 1em;
+    padding: 12px 24px;
+  }
+
+  .error-page .falling-icon {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-page {
+    padding: 30px 10px; /* Reduced padding for mobile */
+    margin: 20px auto;
+  }
+
+  .error-page h1 {
+    font-size: 4em; /* Smaller font size for mobile */
+  }
+
+  .error-page p {
+    font-size: 1em;
+  }
+
+  .error-page a {
+    font-size: 0.9em;
+    padding: 10px 20px;
+  }
+
+  .error-page .falling-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+/* related to */
+
+
+.related-to{
+border-left: 4px solid skyblue; 
+height:28px;                   
+margin-left: -12px;                  
+font-size:21px; 
+
+}
+#related-tospan{
+ margin-left: 17px;
+}
+
+@media (min-width: 765px){
+ .related-to{
+border-left: 5px solid skyblue; 
+height:32px;                   
+margin-left: 4px;                  
+font-size:24px; 
+
+}
+#related-tospan{
+ margin-left: 17px;
+}
+
+}
   ]]></b:skin>
 </head>
 <body>
@@ -795,17 +1104,35 @@ color:white;
   <header>
     <div class='logo'>
   <a expr:href='data:blog.homepageUrl'><data:blog.title/></a>
-</div> <div class='hamburger' id='hamburger'>&#9776;</div>
-    <nav class='nav-links'>
-<a href='#'>Bhaktamar</a>
-<a href='posttest.html'>Aarti</a>
-<a href='#'>Pooja</a>
-<a href='#'>Jain Bhajan</a>
-<a href='#'>Stotra Path</a>
-<a href='#'>Jain Dharma</a>
-<a href='#'>Jain Mandir</a>
+</div> <div class='hamburger' id='hamburger'/>
+<nav class='nav-links'>
+  <a href='/'>Home</a>
+  <div class='dropdown'>
+    <a href='#'>Books</a>
+    <span class='arrow'>&#9662;</span>
+    <div class='dropdown-menu'>
+      <a href='#'>&#8226; Bhaktamar</a>
+      <a href='#'>&#8226; Chalisa</a>
+       <a href='#'>&#8226; Jain Bhajan</a>
+       <a href='#'>&#8226; Aarti</a>
+    </div>
+  </div>
 
-    </nav>
+  <div class='dropdown'>
+    <a href='posttest.html'>Pooja</a>
+    <span class='arrow'>&#9662;</span>
+    <div class='dropdown-menu'>
+      <a href='#'>&#8226; Stotra Path</a>
+      <a href='#'>&#8226; Evening Aarti</a>
+    </div>
+  </div>
+
+ 
+
+  <a href='#'>Jain Dharma</a>
+  <a href='#'>Jain Mandir</a>
+</nav>
+
   </header>
 
 <!-- Sidebar -->
@@ -813,26 +1140,43 @@ color:white;
  <div class='sideflexy'>
    
 
-<div class='homesearch-bar'>
+<div class='sidebar-logo'>
   <data:blog.title/>
 </div>
   <button class='sidebar-close' id='closeSidebar'>&amp;times;</button>
   </div>
-  <ul class='sidebar-menu'>
-    
-    <li><a href='#home'><i class='fas fa-home'/> Home</a></li>
+<ul class='sidebar-menu'>
+  <li class='sidebar-dropdown'>
+    <a href='#'><i class='fas fa-book'/> Bhaktamar <span class='sidebar-arrow'>&#9662;</span></a>
+    <ul class='sidebar-submenu'>
+      <li><a href='#'>Bhaktamar Stotra</a></li>
+      <li><a href='#'>Bhaktamar Meaning</a></li>
+    </ul>
+  </li>
 
-  <li><a href='#'><i class='fas fa-book'/> Bhaktamar</a></li>
-  <li><a href='posttest.html'><i class='fas fa-praying-hands'/> Aarti</a></li>
+  <li class='sidebar-dropdown'>
+    <a href='posttest.html'><i class='fas fa-praying-hands'/> Aarti <span class='sidebar-arrow'>&#9662;</span></a>
+    <ul class='sidebar-submenu'>
+      <li><a href='#'>Morning Aarti</a></li>
+      <li><a href='#'>Evening Aarti</a></li>
+    </ul>
+  </li>
+
   <li><a href='#'><i class='fas fa-hand-holding-heart'/> Pooja</a></li>
-  <li><a href='#'><i class='fas fa-om'/> Stotra Path</a></li>
   <li><a href='#'><i class='fas fa-music'/> Jain Bhajan</a></li>
+
+  <li class='sidebar-dropdown'>
+    <a href='#'><i class='fas fa-om'/> Stotra Path <span class='sidebar-arrow'>&#9662;</span></a>
+    <ul class='sidebar-submenu'>
+      <li><a href='#'>Namokar Stotra</a></li>
+      <li><a href='#'>Uvasaggaharam Stotra</a></li>
+    </ul>
+  </li>
+
   <li><a href='#'><i class='fas fa-university'/> Jain Dharma</a></li>
   <li><a href='#'><i class='fas fa-place-of-worship'/> Jain Mandir</a></li>
-
-
-
 </ul>
+
 
  
   <div class='sidebar-footer'>
@@ -856,6 +1200,8 @@ color:white;
   <i class='fas fa-bars'/>
 </div>
 
+  
+
   <!-- Main Content -->
   <div class='container'>
     <div class='main-content'>
@@ -866,8 +1212,8 @@ color:white;
             <b:if cond='data:view.isHomepage or data:view.isLabelSearch'>
               <!-- Label Page Heading -->
               <b:if cond='data:view.isLabelSearch'>
-                <h1 style=' border-left: 4px solid skyblue; height:28px;                   margin-left: -12px;                  font-size:                  21px; '>
-                 <span style='margin-left: 10px;'>Related To </span>
+                <h1 class="related-to">
+                 <span id="related-tospan">Related To </span>
 <data:blog.searchLabel/> : </h1>
                 <br/>
               </b:if>
@@ -905,7 +1251,7 @@ color:white;
                           <img src='https://via.placeholder.com/20' alt='Logo'/> <!-- Replace with your logo URL -->
                         </div>
                         <span class='published-date'>
-                          <b:if cond='data:post.author'>By <data:post.author/></b:if>
+                          <b:if cond='data:post.author'>By <data:blog.title/></b:if>
                           <b:if cond='data:post.date'> | <data:post.date/></b:if>
                         </span>
                       </div>
@@ -918,31 +1264,48 @@ color:white;
               <p class='thats-all'>That's all!</p>
             </b:if>
             <!-- Individual Post Page Layout -->
-            <b:if cond='data:view.isSingleItem'>
-              <b:loop values='data:posts' var='post'>
-                <div class='single-post-header'>
-                  <!-- Breadcrumbs -->
-                <p class='breadcrumbs'>
-  <a href='/'>Home</a> &gt;
-  <span>Jinvani</span> 
-  
-</p>
-                  
-                  <!-- Title -->
-                  <h1><data:post.title/></h1>
-                  <!-- Meta Information -->
-                  <p class='meta'>
-                    <img src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQ5rf0s5Q8jnsHt8_k8DZ601eDL5onEIQFLK5rADqlfRPbY5viJ-6xIoJrLg1TexdPVNMuk1X6jWkznLQT0UJyCwuoqgL52rr9hLELaeUVGF2pis330FCWz2hseHJ6q3CByVKosbgeOP7K2wN-TkH4g9Y9BY00V2vULnYxP5u5utpbu6Ex0NQsN1VmhRdu/s1600/1000037862.jpg' alt='Logo'/> <!-- Replace with your logo URL -->
-                    <span>Jinvani </span> <span> </span>| 
-                    <b:if cond='data:post.date'><data:post.date format='dd-MM-yyyy'/></b:if>
-                  </p>
-                </div>
-                <!-- Post Content -->
-                <div class='post-content-card'>
-                  <p><data:post.body/></p>
-                </div>
-              </b:loop>
-            </b:if>
+<b:if cond='data:view.isPage'>
+       <b:if cond='data:view.isSingleItem'>
+  <b:loop values='data:posts' var='post'>
+    <div class='single-post-header'>
+     
+      <!-- Title -->
+      <h1><data:post.title/></h1>
+      
+    </div>
+    <!-- Post Content -->
+    <div class='post-content-card'>
+      <p><data:post.body/></p>
+    </div>
+  </b:loop>
+</b:if>    
+          </b:if>  
+            <b:if cond='data:view.isPost'>
+       <b:if cond='data:view.isSingleItem'>
+  <b:loop values='data:posts' var='post'>
+    <div class='single-post-header'>
+      <!-- Breadcrumbs -->
+      <p class='breadcrumbs'>
+        <a href='/'>Home</a> &gt;
+        <span>Jinvani</span> 
+      </p>
+      <!-- Title -->
+      <h1><data:post.title/></h1>
+      <!-- Meta Information -->
+      <p class='meta'>
+        <img alt='Logo' src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQ5rf0s5Q8jnsHt8_k8DZ601eDL5onEIQFLK5rADqlfRPbY5viJ-6xIoJrLg1TexdPVNMuk1X6jWkznLQT0UJyCwuoqgL52rr9hLELaeUVGF2pis330FCWz2hseHJ6q3CByVKosbgeOP7K2wN-TkH4g9Y9BY00V2vULnYxP5u5utpbu6Ex0NQsN1VmhRdu/s1600/1000037862.jpg'/> <!-- Replace with your logo URL -->
+        <span>Jinvani </span> <span> </span>| 
+        <b:if cond='data:post.date'><data:post.date format='dd-MM-yyyy'/></b:if>
+      </p>
+    </div>
+    <!-- Post Content -->
+    <div class='post-content-card'>
+      <p><data:post.body/></p>
+    </div>
+  </b:loop>
+</b:if>    
+          </b:if>  
+          
             <!-- 404 Error Page -->
             <b:if cond='data:view.isError'>
               <div class='error-page'>
@@ -958,47 +1321,49 @@ color:white;
   </div>
 <!-- Footer Section -->
 <footer>
-  <div class="footer-container">
+  <div class='footer-container'>
     <!-- About Us Column (Left) -->
-    <div class="footer-section">
+    <div class='footer-section'>
       <h3><data:blog.title/></h3>
       <p><strong><data:blog.title/></strong> offers rich Jain devotional content: <strong>Chalisa</strong>, <strong>Bhajan</strong>, <strong>Pooja</strong>, <strong>Bhaktambar</strong>.</p>
     </div>
     <!-- Quick Links Column (Center) -->
-    <div class="footer-section quick-link1">
+    <div class='footer-section quick-link1'>
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
-        <li><a href="#"><i class="fas fa-music"></i> Jain Bhajan</a></li>
-        <li><a href="#"><i class="fas fa-place-of-worship"></i> Jain Mandir</a></li>
+        <li><a href='/'><i class='fas fa-home'/>Home</a></li>
+        <li><a href='#'><i class='fas fa-music'/> Jain Bhajan</a></li>
+        <li><a href='#'><i class='fas fa-place-of-worship'/> Jain Mandir</a></li>
       </ul>
     </div>
     <!-- Follow Us Column (Right) -->
-    <div class="footer-section">
+    <div class='footer-section'>
       <h3>Follow Us</h3>
-      <div class="social-links">
-        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+      <div class='social-links'>
+        <a class='facebook' href='#'><i class='fab fa-facebook-f'/></a>
+        <a class='twitter' href='#'><i class='fab fa-twitter'/></a>
+        <a class='instagram' href='#'><i class='fab fa-instagram'/></a>
+        <a class='linkedin' href='#'><i class='fab fa-linkedin-in'/></a>
       </div>
       <!-- Tagline visible in desktop mode -->
-      <p class="social-tagline">Get updated by following on social media</p>
+      <p class='social-tagline'>Get updated by following on social media</p>
     </div>
   </div>
   <!-- Footer Bottom Area -->
-  <div class="footer-bottom">
-    <div class="footer-copy">
-      © <data:blog.title/>. All rights reserved.
+  <div class='footer-bottom'>
+    <div class='footer-copy'>
+      &#169;   <a expr:href='data:blog.homepageUrl'><data:blog.title/></a>
+      . All rights reserved.
     </div>
-    <div class="footer-pages">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Contact Us</a>
-      <a href="#">Terms</a>
-      <a href="#">Disclaimer</a>
+    <div class='footer-pages'>
+      <a href='#'>Privacy Policy</a>
+      <a href='#'>Contact Us</a>
+      <a href='#'>Terms</a>
+      <a href='#'>Disclaimer</a>
     </div>
   </div>
 </footer>
+
   <!-- JavaScript -->
   <script>    //<![CDATA[
         // Sidebar toggle functionality for mobile
@@ -1072,6 +1437,72 @@ color:white;
       });
     });
     
+   
+// Dropdown Close on Click Outside (Desktop)
+document.addEventListener("click", function (event) {
+  let isDropdown = event.target.closest(".dropdown");
+
+  document.querySelectorAll(".dropdown").forEach(drop => {
+    if (!isDropdown || drop !== isDropdown) {
+      drop.classList.remove("active");
+    }
+  });
+});
+
+document.addEventListener("click", function (event) {
+
+  let isDropdown = event.target.closest(".dropdown");
+
+  let isSidebar = event.target.closest("#sidebar");
+
+  let isSidebarButton = event.target.closest("#sidebarTab, #hamburger");
+
+  // Close all dropdowns if clicked outside
+
+  if (!isDropdown) {
+
+    document.querySelectorAll(".dropdown").forEach(drop => drop.classList.remove("active"));
+
+  }
+
+  // Close sidebar if clicked outside (except sidebar button)
+
+  if (!isSidebar && !isSidebarButton) {
+
+    document.getElementById("sidebar").classList.remove("open");
+
+  }
+
+});
+// Mobile Dropdown (Sidebar)
+document.querySelectorAll('.sidebar-dropdown > a').forEach(item => {
+  item.addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent default link behavior
+    this.parentElement.classList.toggle('active');
+
+    // Close other open dropdowns in sidebar
+    document.querySelectorAll('.sidebar-dropdown').forEach(drop => {
+      if (drop !== this.parentElement) drop.classList.remove('active');
+    });
+  });
+});
+
+document.querySelectorAll('.dropdown > a').forEach(item => {
+  item.addEventListener('click', function (event) {
+    event.preventDefault(); // Prevents page jump
+    let parent = this.parentElement;
+    
+    // Close other open dropdowns
+    document.querySelectorAll('.dropdown').forEach(drop => {
+      if (drop !== parent) drop.classList.remove('active');
+    });
+
+    // Toggle this dropdown
+    parent.classList.toggle('active');
+  });
+});
+
+
     //]]>
   </script>
 </body>
