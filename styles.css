@@ -27,13 +27,13 @@ header .logo {
 
 header .nav-links {
   display: flex;
-  gap: 29px;
+  gap: 23px;
 }
 
 header .nav-links a {
   color: white;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 400;
 }
 
