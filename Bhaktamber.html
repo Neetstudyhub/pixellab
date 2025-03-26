@@ -308,15 +308,16 @@
     <!-- Header with Navbar -->
   <header>
     <div class="logo"><a href="index.html.html">Jinvani</a></div>
+   
     <div class="hamburger" id="hamburger">☰</div>
     <nav class="nav-links">
 <a href="Bhaktamber.html">Bhaktamar</a>
 <a href="Aarti.html">Aarti</a>
-<a href="#">Pooja</a>
-<a href="Jainbhajan.html">Jain Bhajan</a>
-<a href="Sotrapath.html">Stotra Path</a>
-<a href="Jaindharam.html">Jain Dharma</a>
-<a href="Jainmandir.html">Jain Mandir</a>
+<a href="Pooja.html">Pooja</a>
+<a href="Jain Bhajan.html">Jain Bhajan</a>
+<a href="Stotra Path.html">Stotra Path</a>
+<a href="Jain Dharam.html">Jain Dharma</a>
+<a href="Jain Mandir.html">Jain Mandir</a>
 
     </nav>
   </header>
@@ -337,11 +338,11 @@
 
   <li><a href="Bhaktamber.html"><i class="fas fa-book"></i> Bhaktamar</a></li>
   <li><a href="Aarti.html"><i class="fas fa-praying-hands"></i> Aarti</a></li>
-  <li><a href="#"><i class="fas fa-hand-holding-heart"></i> Pooja</a></li>
-  <li><a href="Jainbhajan.html"><i class="fas fa-om"></i> Stotra Path</a></li>
-  <li><a href="Sotrapath.html"><i class="fas fa-music"></i> Jain Bhajan</a></li>
-  <li><a href="Jaindharam.html"><i class="fas fa-university"></i> Jain Dharma</a></li>
-  <li><a href="Jainmandir.html"><i class="fas fa-place-of-worship"></i> Jain Mandir</a></li>
+  <li><a href="Pooja.html"><i class="fas fa-hand-holding-heart"></i> Pooja</a></li>
+  <li><a href="Stotra Path.html"><i class="fas fa-om"></i> Stotra Path</a></li>
+  <li><a href="Jain Bhajan.html"><i class="fas fa-music"></i> Jain Bhajan</a></li>
+  <li><a href="Jain Dharam.html"><i class="fas fa-university"></i> Jain Dharma</a></li>
+  <li><a href="Jain Mandir.html"><i class="fas fa-place-of-worship"></i> Jain Mandir</a></li>
 
 
 
@@ -437,8 +438,7 @@
     <div class="footer-container">
       <!-- About Us Column (Left) -->
       <div class="footer-section">
-        <h2><a href="index.html.html">Jinvani</a></h2>
-   
+        <h3><a href="index.html">Jinvani</a></h3>
 <p><strong>Jinvani</strong> offers rich Jain devotional content: <strong>Chalisa</strong>, <strong>Bhajan</strong>, <strong>Pooja</strong>, <strong>Bhaktambar</strong>.</p>
 
       </div>
@@ -521,7 +521,7 @@
         // Filter posts to include only those with the "blog" label
         const filteredPosts = data.items.filter(
           (post) =>
-          post.labels && post.labels.some((label) => label.toLowerCase() === "bhaktamber")
+          post.labels && post.labels.some((label) => label.toLowerCase() === "bhaktamber", "Bhaktamber")
         );
         
         if (filteredPosts.length === 0) {
