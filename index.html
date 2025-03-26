@@ -484,7 +484,7 @@
   <script>
     const cloudflareProxy = "https://broken-hall-68ac.earnmoney100a.workers.dev/";
     const maxResults = 100;
-    const postsPerBatch = 6;
+    const postsPerBatch = 8;
     
     let latestPosts = []; // Stores posts with the "latest" label
     let displayedPosts = 0; // Tracks how many posts have been shown
@@ -520,7 +520,7 @@
         // Filter posts to include only those with the "blog" label
         const filteredPosts = data.items.filter(
           (post) =>
-          post.labels && post.labels.some((label) => label.toLowerCase() === "jinvani")
+          post.labels && post.labels.some((label) => label.toLowerCase() === "chalisa")
         );
         
         if (filteredPosts.length === 0) {
