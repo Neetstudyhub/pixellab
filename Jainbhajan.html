@@ -521,7 +521,7 @@
         // Filter posts to include only those with the "blog" label
         const filteredPosts = data.items.filter(
           (post) =>
-          post.labels && post.labels.some((label) => label.toLowerCase() === "jain bhajan")
+          post.labels && post.labels.some((label) => label.toLowerCase() === "jain bhajan", "bhajan", "Bhajan")
         );
         
         if (filteredPosts.length === 0) {
