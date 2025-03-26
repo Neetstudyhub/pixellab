@@ -307,7 +307,7 @@
 <body>
     <!-- Header with Navbar -->
   <header>
-    <div class="logo"><a href="index.html.html">Jinvani</a></div>
+    <div class="logo"><a href="index.html">Jinvani</a></div>
    
     <div class="hamburger" id="hamburger">☰</div>
     <nav class="nav-links">
@@ -521,7 +521,7 @@
         // Filter posts to include only those with the "blog" label
         const filteredPosts = data.items.filter(
           (post) =>
-          post.labels && post.labels.some((label) => label.toLowerCase() === "Stotra Path", "stotra path", "stotra Path","Stotra path","StotraPath","stotrapath","Stotrapath")
+          post.labels && post.labels.some((label) => label.toLowerCase() === "stotra path")
         );
         
         if (filteredPosts.length === 0) {
