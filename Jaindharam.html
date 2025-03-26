@@ -307,7 +307,7 @@
 <body>
     <!-- Header with Navbar -->
   <header>
-    <div class="logo">Jinvani</div>
+    <div class="logo"><a href="index.html">Jinvani</a></div>
     <div class="hamburger" id="hamburger">☰</div>
     <nav class="nav-links">
 <a href="Bhaktamber.html">Bhaktamar</a>
@@ -327,13 +327,13 @@
    
 
  <div class="homesearch-bar">
-  Jinvani
+  <a href="index.html">Jinvani</a>
 </div>
   <button class="sidebar-close" id="closeSidebar">&times;</button>
   </div>
   <ul class="sidebar-menu">
     
-    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
 
   <li><a href="Bhaktamber.html"><i class="fas fa-book"></i> Bhaktamar</a></li>
   <li><a href="Aarti.html"><i class="fas fa-praying-hands"></i> Aarti</a></li>
@@ -437,7 +437,7 @@
     <div class="footer-container">
       <!-- About Us Column (Left) -->
       <div class="footer-section">
-        <h3>Jinvani</h3>
+        <h3><a href="index.html">Jinvani</a></h3>
 <p><strong>Jinvani</strong> offers rich Jain devotional content: <strong>Chalisa</strong>, <strong>Bhajan</strong>, <strong>Pooja</strong>, <strong>Bhaktambar</strong>.</p>
 
       </div>
@@ -467,7 +467,7 @@
     <!-- Footer Bottom Area -->
     <div class="footer-bottom">
       <div class="footer-copy">
-        © 2025 Jinvani. All rights reserved.
+        © 2025 <a href="index.html">Jinvani</a>. All rights reserved.
       </div>
       <div class="footer-pages">
         <a href="#">Privacy Policy</a>
@@ -520,7 +520,7 @@
         // Filter posts to include only those with the "blog" label
         const filteredPosts = data.items.filter(
           (post) =>
-          post.labels && post.labels.some((label) => label.toLowerCase() === "Jain Dharam")
+          post.labels && post.labels.some((label) => label.toLowerCase() === "Jain Dharam","jaindharam","jain dharm")
         );
         
         if (filteredPosts.length === 0) {
